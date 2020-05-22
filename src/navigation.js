@@ -30,62 +30,54 @@ import DashboardPage from "./pages/dashboard";
 
 const dashboardRoutes = [
     {
-        path: "/dashboard",
+        path: "dashboard",
         name: "Dashboard",
         icon: Dashboard,
         component: DashboardPage,
-        layout: "/pms-web"
+        layout: "/"
     },
     {
-        path: "/user",
-        name: "User Profile",
+        path: "vehicle",
+        name: "Vehicle Catalog",
         icon: Person,
         component: DashboardPage,
-        layout: "/pms-web"
+        layout: "/"
     },
     {
-        path: "/table",
+        path: "table",
         name: "Table List",
         icon: "content_paste",
         component: DashboardPage,
-        layout: "/pms-web"
+        layout: "/"
     },
     {
-        path: "/typography",
+        path: "typography",
         name: "Typography",
         icon: LibraryBooks,
         component: DashboardPage,
-        layout: "/pms-web"
+        layout: "/"
     },
     {
-        path: "/icons",
+        path: "icons",
         name: "Icons",
         icon: BubbleChart,
         component: DashboardPage,
-        layout: "/pms-web"
+        layout: "/"
     },
     {
-        path: "/maps",
+        path: "maps",
         name: "Maps",
         icon: LocationOn,
         component: DashboardPage,
-        layout: "/pms-web"
+        layout: "/"
     },
     {
-        path: "/notifications",
+        path: "notifications",
         name: "Notifications",
         rtlName: "إخطارات",
         icon: Notifications,
         component: DashboardPage,
-        layout: "/pms-web"
-    },
-    {
-        path: "/rtl-page",
-        name: "RTL Support",
-        rtlName: "پشتیبانی از راست به چپ",
-        icon: Language,
-        component: DashboardPage,
-        layout: "/pms-web"
+        layout: "/"
     }
 
 ];

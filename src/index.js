@@ -19,7 +19,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import configureStore from "./store/configureStore";
-import { Router, BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 // core components
 import App from "./App";
 import "./assets/css/material-dashboard-react.css?v=1.8.0";
@@ -29,12 +29,7 @@ const hist = createBrowserHistory();
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter basename={'/pms-web'}>
-            <Router history={hist}>
-                <Switch>
-                    <Route path="/pms-web" component={App} />
-                    <Redirect from="/" to="/pms-web" />
-                </Switch>
-            </Router>
+            <App/>
         </BrowserRouter>
     </Provider>,
     document.getElementById("root")
