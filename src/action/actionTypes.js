@@ -1,0 +1,2 @@
+export const ROUTE_CHANGE = 'ROUTE_CHANGE'
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR'
