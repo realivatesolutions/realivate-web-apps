@@ -11,22 +11,22 @@ import Table from "../../components/Table/Table";
 import Button from "../../components/CustomButtons";
 import CardBody from "../../components/Card/CardBody";
 import CardHeader from "../../components/Card/CardHeader";
-import {actions as clientsAction} from '../../action/clientsAction'
+import {actions as vehicleCategoryActions} from '../../action/vehicleCategoryAction'
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import Paper from "@material-ui/core/Paper";
 
 
-class ClientsPage extends Component {
+class VehicleCategoryPage extends Component {
     constructor(props) {
         super(props);
-        this.handleAddClientEvent = this.handleAddClientEvent.bind(this)
+        this.handleAddCategoryEvent = this.handleAddCategoryEvent.bind(this)
         this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
 
         this.props.actions.getAllVehicle()
     }
 
-    handleAddClientEvent() {
-        this.props.history.push('/clients/create')
+    handleAddCategoryEvent() {
+        this.props.history.push('/vehicle/create')
     }
 
     handleViewCategoryEvent = value => {
@@ -38,8 +38,8 @@ class ClientsPage extends Component {
     }
 
     render() {
-        const { classes, clientsReducer } = this.props;
-        const clients = clientsReducer.data
+        const { classes, vehicleCategoryReducer } = this.props;
+        const vehicleList = vehicleCategoryReducer.data
         return (
             <div>
                 <GridContainer>
@@ -47,7 +47,7 @@ class ClientsPage extends Component {
                         <Card plain>
                             <CardHeader plain color="info">
                                 <h4 className={classes.cardTitleWhite}>
-                                    Client Management
+                                    Vehicle Category
                                 </h4>
                             </CardHeader>
                             <CardBody>
@@ -57,7 +57,7 @@ class ClientsPage extends Component {
                                     <GridItem item xs={6}>
                                     </GridItem>
                                     <GridItem item xs={3} container justify="flex-end">
-                                        <Button color="info" round onClick={this.handleAddClientEvent}> Add New Client</Button>
+                                        <Button color="info" round onClick={this.handleAddCategoryEvent}> Add </Button>
                                     </GridItem>
                                 </GridContainer>
                                 <br/>
@@ -66,10 +66,10 @@ class ClientsPage extends Component {
                                         withActionView={true}
                                         withActionEdit={true}
                                         tableHeaderColor="gray"
-                                        tableHead={[ "Name", "Address", "Contact Person", "Contact Info" , "Status"]}
-                                        tableDataMapping={[ "name", "address", "contactPerson", "contactInfo","status"]}
-                                        tableData={clients}
-                                        handleAddClientEvent={this.handleAddClientEvent}
+                                        tableHead={[ "Type", "Name", "Description", ""]}
+                                        tableDataMapping={[ "categoryType", "name", "description"]}
+                                        tableData={vehicleList}
+                                        handleAddCategoryEvent={this.handleAddCategoryEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
                                         uniqueId={'categoryType'}
                                     />
@@ -85,16 +85,16 @@ class ClientsPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        clientsReducer: state.clientsReducer
+        vehicleCategoryReducer: state.vehicleCategoryReducer
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({...clientsAction}, dispatch)
+        actions: bindActionCreators({...vehicleCategoryActions}, dispatch)
     }
 }
 
 export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ClientsPage))
+    connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(VehicleCategoryPage))
 )

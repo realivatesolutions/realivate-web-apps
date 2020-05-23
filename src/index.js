@@ -19,7 +19,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import configureStore from "./store/configureStore";
-import { Router, BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 // core components
 import App from "./App";
 import "./assets/css/material-dashboard-react.css?v=1.8.0";
@@ -28,13 +28,8 @@ const store = configureStore()
 const hist = createBrowserHistory();
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter basename={'/eorder-web'}>
-            <Router history={hist}>
-                <Switch>
-                    <Route path="/eorder-web" component={App} />
-                    <Redirect from="/" to="/eorder-web" />
-                </Switch>
-            </Router>
+        <BrowserRouter basename={'/realivate-ops'}>
+            <App/>
         </BrowserRouter>
     </Provider>,
     document.getElementById("root")

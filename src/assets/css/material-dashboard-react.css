@@ -75,14 +75,6 @@ blockquote small:before {
   content: "\2014 \00A0";
 }
 
-.realivate-logo {
-  top:22px;
-  width: 200px;
-  border:0;
-  position: absolute;
-  vertical-align: middle;
-}
-
 small {
   font-size: 80%;
 }
@@ -516,4 +508,12 @@ footer ul li a:hover {
 }
 * {
   letter-spacing: normal !important;
+}
+
+.realivate-logo {
+  top:22px;
+  width: 200px;
+  border:0;
+  position: absolute;
+  vertical-align: middle;
 }

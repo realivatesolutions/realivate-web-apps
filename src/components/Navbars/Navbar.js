@@ -19,12 +19,13 @@ import styles from "../../assets/jss/material-dashboard-react/components/headerS
 const useStyles = makeStyles(styles);
 
 export default function Header(props) {
+  console.log('props', props)
   const classes = useStyles();
   function makeBrand() {
     var name;
     props.routes.map(prop => {
       if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
-        name = props.rtlActive ? prop.rtlName : prop.name;
+        name = prop.name;
       }
       return null;
     });

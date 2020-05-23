@@ -30,27 +30,26 @@ import ClientsPage from "./pages/clients";
 
 const dashboardRoutes = [
     {
-        path: "/dashboard",
+        path: "dashboard",
         name: "Dashboard",
         icon: Dashboard,
         component: DashboardPage,
-        layout: "/eorder-web"
+        layout: "/"
     },
     {
-        path: "/clients",
-        name: "Client Manager",
+        path: "vehicle",
+        name: "Vehicle Catalog",
+        icon: Person,
+        component: DashboardPage,
+        layout: "/"
+    },
+    {
+        path: "clients",
+        name: "Clients",
         icon: Person,
         component: ClientsPage,
-        layout: "/eorder-web"
-    },
-    {
-        path: "/products",
-        name: "Products",
-        icon: "content_paste",
-        component: DashboardPage,
-        layout: "/eorder-web"
+        layout: "/"
     }
-
 ];
 
 export default dashboardRoutes;

@@ -4,7 +4,7 @@ let initialState = {
     data: [],
     selectedCategory: {}
 }
-export default function clientsReducer(state = initialState, action) {
+export default function vehicleCategoryReducer(state = initialState, action) {
 
     switch (action.type){
         case types.LOAD_ALL_VEHICLE_CATEGORY_SUCCESS:
