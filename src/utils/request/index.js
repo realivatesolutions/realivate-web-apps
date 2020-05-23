@@ -9,6 +9,7 @@ const getInstance = (baseUrl) => {
 
     instance.interceptors.request.use((config) => {
         config.headers.post['Content-Type'] = 'application/json';
+        config.headers.put['Content-Type'] = 'application/json';
         return config
     }, (error) => {
         return Promise.reject(error)

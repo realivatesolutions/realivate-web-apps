@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from "redux";
-import * as globalAction from "../../action/globalAction";
 import {withStyles} from "@material-ui/core/styles";
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import GridContainer from "../../components/Grid/GridContainer";
@@ -20,7 +19,8 @@ class CreateVehicleCategoryPage extends Component {
         super(props);
         this.state = {
             category:{
-                categoryType: ''
+                categoryType: '',
+                clientRealm: 'REALIVATE'
             }
         }
         this.handleChange = this.handleChange.bind(this)
@@ -38,7 +38,7 @@ class CreateVehicleCategoryPage extends Component {
     };
 
     handleSubmit() {
-        this.props.actions.createVehicle(this.state)
+        this.props.actions.createVehicle(this.state.category)
         this.props.history.push('/vehicle')
     }
 

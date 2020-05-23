@@ -53,8 +53,18 @@ function getVehicle(id) {
     };
 }
 
+function updateVehicle(data){
+    return dispatch => {
+        VehicleCategoryService.updateVehicle(data).then( response => {
+        }).catch( error => {
+            dispatch(loadVehicleCategoriesFailed(error.message))
+        })
+    };
+}
+
 export const actions = {
     getAllVehicle: getAllVehicle,
     createVehicle: createVehicle,
-    getVehicle: getVehicle
+    getVehicle: getVehicle,
+    updateVehicle: updateVehicle
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from "redux";
-import * as globalAction from "../../action/globalAction";
 import {withStyles} from "@material-ui/core/styles";
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import GridContainer from "../../components/Grid/GridContainer";
@@ -40,7 +39,7 @@ class ViewVehicleCategoryPage extends Component {
 
     componentWillReceiveProps(nextProps, nextContext) {
        const { vehicleCategoryReducer } = nextProps
-        if(!this.state.category && vehicleCategoryReducer && vehicleCategoryReducer.selectedCategory){
+        if(!this.state.category && vehicleCategoryReducer.selectedCategory){
             this.setState({
                 ...this.state,
                 category: vehicleCategoryReducer.selectedCategory
@@ -50,6 +49,7 @@ class ViewVehicleCategoryPage extends Component {
 
     render() {
         const {classes} = this.props
+        console.log(this.state.category)
         return (
             <div>
                 <GridContainer>

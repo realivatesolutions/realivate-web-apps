@@ -1,26 +1,12 @@
 import httpClient from "../utils/request";
 import config from '../config/config';
-const data = [
-    {
-        categoryType: 'Truck',
-        name: 'ABC',
-        description: 'Truck'
-    },
-    {
-        categoryType: 'Container',
-        name: 'EFG',
-        description: 'Container Van'
-    }
-]
 
 export class VehicleCategoryService {
 
     static getAllVehicleCategory() {
         return new Promise((resolve, reject) => {
-            console.log('config.catalogBaseUrl', config.catalogBaseUrl)
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
             httpClientObj.get('catalogs').then((response) => {
-                console.log('response', response)
                 resolve(response)
             }).catch((err) => {
                 console.log(err.message)
@@ -31,8 +17,8 @@ export class VehicleCategoryService {
 
     static createVehicle(object) {
         return new Promise((resolve, reject) => {
-            let httpClientObj = httpClient.getInstance();
-            httpClientObj.post('/category', object ).then((response) => {
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
+            httpClientObj.post('catalogs', object ).then((response) => {
                 resolve(response)
             }).catch((error) => {
                 reject(error.message)
@@ -40,21 +26,27 @@ export class VehicleCategoryService {
         })
     }
 
-    static getVehicle(id){
-        console.log('id', id)
+    static updateVehicle(object){
         return new Promise((resolve, reject) => {
-            // httpClientObj.get('/category/' + id).then((response) => {
-            //     resolve(response)
-            // }).catch((err) => {
-            //     reject(err)
-            // })
-
-            const category = data.find(d => {
-                return d.categoryType === id
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
+            httpClientObj.put('catalogs', object ).then((response) => {
+                resolve(response)
+            }).catch((error) => {
+                reject(error.message)
             })
-            let response = {}
-            response.data = category;
-            resolve(response)
+        })
+    }
+
+
+    static getVehicle(id){
+        return new Promise((resolve, reject) => {
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
+            httpClientObj.get('catalogs/' + id).then((response) => {
+                resolve(response)
+            }).catch((err) => {
+                console.log(err.message)
+                reject(err)
+            })
         })
     }
 }

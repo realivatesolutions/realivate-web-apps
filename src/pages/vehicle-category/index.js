@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from "redux";
-import * as globalAction from '../../action/globalAction'
 import { withStyles} from "@material-ui/core/styles";
 import GridContainer from "../../components/Grid/GridContainer";
 import GridItem from "../../components/Grid/GridItem";
@@ -22,12 +21,21 @@ class VehicleCategoryPage extends Component {
         super(props);
         this.handleAddCategoryEvent = this.handleAddCategoryEvent.bind(this)
         this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
+    }
 
+    componentDidMount() {
         this.props.actions.getAllVehicle()
     }
 
     handleAddCategoryEvent() {
         this.props.history.push('/vehicle/create')
+    }
+
+    handleEditCategoryEvent = value => {
+        this.props.history.push({
+            pathname: '/vehicle/edit',
+            state: { id : value }
+        })
     }
 
     handleViewCategoryEvent = value => {
@@ -41,6 +49,7 @@ class VehicleCategoryPage extends Component {
     render() {
         const { classes, vehicleCategoryReducer } = this.props;
         const vehicleList = vehicleCategoryReducer.data
+        console.log('vehicleList', vehicleList)
         return (
             <div>
                 <GridContainer>
@@ -72,7 +81,8 @@ class VehicleCategoryPage extends Component {
                                         tableData={vehicleList}
                                         handleAddCategoryEvent={this.handleAddCategoryEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
-                                        uniqueId={'categoryType'}
+                                        handleEditCategoryEvent={this.handleEditCategoryEvent}
+                                        uniqueId={'id'}
                                     />
                                 </Paper>
                             </CardBody>
