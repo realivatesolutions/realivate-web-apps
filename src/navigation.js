@@ -44,6 +44,13 @@ const dashboardRoutes = [
         layout: "/"
     },
     {
+        path: "service-crew",
+        name: "Service Crew",
+        icon: Person,
+        component: DashboardPage,
+        layout: "/"
+    },
+    {
         path: "table",
         name: "Table List",
         icon: "content_paste",
