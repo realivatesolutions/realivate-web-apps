@@ -4,11 +4,12 @@ const getInstance = (baseUrl) => {
     let instance = axios.create({
         baseURL: baseUrl,
         timeout: 100000,
-        xsrfHeaderName: 'x-csrf-token'
+  
     })
 
     instance.interceptors.request.use((config) => {
-        config.headers.post['Content-Type'] = 'application/json'
+        config.headers.post['Access-Control-Allow-Origin'] = '*'
+        config.headers.post['Access-Control-Allow-Credentials'] =  true;
         return config
     }, (error) => {
         return Promise.reject(error)
