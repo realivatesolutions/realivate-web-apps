@@ -29,7 +29,7 @@ export class VehicleCategoryService {
     static updateVehicle(object){
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            httpClientObj.put('catalogs', object ).then((response) => {
+            httpClientObj.post('catalogs', object ).then((response) => {
                 resolve(response)
             }).catch((error) => {
                 reject(error.message)

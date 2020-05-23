@@ -71,7 +71,7 @@ class EditVehicleCategoryPage extends Component {
                         <Card plain>
                             <CardHeader plain color="info">
                                 <h4 className={classes.cardTitleWhite}>
-                                    Create Vehicle Category
+                                    Edit Vehicle Category
                                 </h4>
                             </CardHeader>
                             <CardBody>
@@ -82,6 +82,7 @@ class EditVehicleCategoryPage extends Component {
                                                 <TextField
                                                     id="categoryType"
                                                     value={this.state.category && this.state.category.categoryType}
+                                                    onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
                                                     }}
@@ -91,6 +92,7 @@ class EditVehicleCategoryPage extends Component {
                                                 <TextField
                                                     id="name"
                                                     value={this.state.category && this.state.category.name}
+                                                    onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
                                                     }}
@@ -100,6 +102,7 @@ class EditVehicleCategoryPage extends Component {
                                                 <TextField
                                                     id="description"
                                                     value={this.state.category && this.state.category.description}
+                                                    onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
                                                     }}
