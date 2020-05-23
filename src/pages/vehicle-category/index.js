@@ -12,24 +12,34 @@ import Button from "../../components/CustomButtons";
 import CardBody from "../../components/Card/CardBody";
 import CardHeader from "../../components/Card/CardHeader";
 import {actions as vehicleCategoryActions} from '../../action/vehicleCategoryAction'
-import styles from "../../assets/jss/material-dashboard-react/views/dashboardStyle";
+import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
+import Paper from "@material-ui/core/Paper";
 
 
 class VehicleCategoryPage extends Component {
     constructor(props) {
         super(props);
-        this.props.actions.getAllVehicle()
         this.handleAddCategoryEvent = this.handleAddCategoryEvent.bind(this)
+        this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
+
+        this.props.actions.getAllVehicle()
     }
 
     handleAddCategoryEvent() {
         this.props.history.push('/vehicle/create')
     }
 
+    handleViewCategoryEvent = value => {
+        this.props.history.push({
+            pathname: '/vehicle/view',
+            state: { id : value }
+        })
+
+    }
+
     render() {
         const { classes, vehicleCategoryReducer } = this.props;
         const vehicleList = vehicleCategoryReducer.data
-        console.log(vehicleCategoryReducer)
         return (
             <div>
                 <GridContainer>
@@ -41,15 +51,29 @@ class VehicleCategoryPage extends Component {
                                 </h4>
                             </CardHeader>
                             <CardBody>
-                                <Table
-                                    withActionView={true}
-                                    withActionEdit={true}
-                                    tableHeaderColor="gray"
-                                    tableHead={[ "Type", "Name", "Description", ""]}
-                                    tableDataMapping={[ "categoryType", "name", "description"]}
-                                    tableData={vehicleList}
-                                    handleAddCategoryEvent={this.handleAddCategoryEvent}
-                                />
+                                <GridContainer>
+                                    <GridItem item xs={3}>
+                                    </GridItem>
+                                    <GridItem item xs={6}>
+                                    </GridItem>
+                                    <GridItem item xs={3} container justify="flex-end">
+                                        <Button color="info" round onClick={this.handleAddCategoryEvent}> Add </Button>
+                                    </GridItem>
+                                </GridContainer>
+                                <br/>
+                                <Paper className={classes.contentRoot} elevation={1}>
+                                    <Table
+                                        withActionView={true}
+                                        withActionEdit={true}
+                                        tableHeaderColor="gray"
+                                        tableHead={[ "Type", "Name", "Description", ""]}
+                                        tableDataMapping={[ "categoryType", "name", "description"]}
+                                        tableData={vehicleList}
+                                        handleAddCategoryEvent={this.handleAddCategoryEvent}
+                                        handleViewCategoryEvent={this.handleViewCategoryEvent}
+                                        uniqueId={'categoryType'}
+                                    />
+                                </Paper>
                             </CardBody>
                         </Card>
                     </GridItem>

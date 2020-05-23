@@ -12,19 +12,19 @@ import InfoIcon from '@material-ui/icons/Info';
 import EditIcon from '@material-ui/icons/Edit';
 // core components
 import styles from "../../assets/jss/material-dashboard-react/components/tableStyle.js";
-import Button from "../CustomButtons";
 const useStyles = makeStyles(styles);
 
 export default function CustomTable(props) {
   const classes = useStyles();
-  const { tableHead, tableDataMapping, tableData, tableHeaderColor, withActionAdd,  withActionView, withActionEdit, withActionDelete, handleAddCategoryEvent } = props;
+  const { uniqueId, tableHead, tableDataMapping, tableData, tableHeaderColor,  withActionView, withActionEdit, withActionDelete, handleViewCategoryEvent } = props;
   const hasAction = withActionView || withActionEdit || withActionDelete || false
+
+  const viewEventHandler = (object) => {
+    handleViewCategoryEvent(object[uniqueId])
+  };
+
   return (
     <div className={classes.tableResponsive}>
-      
-      <div style={{ flex: 1 }}>
-        <Button color="info" round onClick={handleAddCategoryEvent}> Add </Button>
-      </div>
       <Table className={classes.table}>
         {tableHead !== undefined ? (
           <TableHead className={classes[tableHeaderColor + "TableHeader"]}>
@@ -57,7 +57,7 @@ export default function CustomTable(props) {
                     })}
                     { hasAction && <TableCell className={classes.tableCell} key={'action'} align={'center'}>
                       { withActionView &&
-                      <IconButton className={classes.button} aria-label="View" component='a' href={'#'}>
+                      <IconButton className={classes.button} aria-label="View" onClick={() => { viewEventHandler(obj) }}>
                         <InfoIcon />
                       </IconButton>
                       }
@@ -100,9 +100,9 @@ CustomTable.propTypes = {
   tableHead: PropTypes.arrayOf(PropTypes.string),
   tableData: PropTypes.arrayOf(PropTypes.any),
   tableDataMapping: PropTypes.arrayOf(PropTypes.any),
-  withActionAdd: PropTypes.bool,
   withActionEdit: PropTypes.bool,
   withActionView: PropTypes.bool,
   withActionDelete: PropTypes.bool,
-  handleAddCategoryEvent: PropTypes.func
+  handleAddCategoryEvent: PropTypes.func,
+  uniqueId: PropTypes.any
 };

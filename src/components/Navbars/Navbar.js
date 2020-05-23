@@ -25,7 +25,7 @@ export default function Header(props) {
     var name;
     props.routes.map(prop => {
       if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
-        name = prop.name === 'Dashboard' ? prop.name : '';
+        name = prop.name;
       }
       return null;
     });

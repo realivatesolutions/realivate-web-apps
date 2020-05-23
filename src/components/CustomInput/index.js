@@ -17,6 +17,8 @@ const useStyles = makeStyles(styles);
 export default function Index(props) {
   const classes = useStyles();
   const {
+    value,
+    onChange,
     formControlProps,
     labelText,
     id,
@@ -53,11 +55,13 @@ export default function Index(props) {
         </InputLabel>
       ) : null}
       <Input
+        value={value}
         classes={{
           root: marginTop,
           disabled: classes.disabled,
           underline: underlineClasses
         }}
+        onChange={onChange && onChange}
         id={id}
         {...inputProps}
       />
@@ -71,6 +75,8 @@ export default function Index(props) {
 }
 
 Index.propTypes = {
+  value: PropTypes.any,
+  onChange: PropTypes.func,
   labelText: PropTypes.node,
   labelProps: PropTypes.object,
   id: PropTypes.string,

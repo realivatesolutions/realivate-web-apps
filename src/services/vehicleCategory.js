@@ -1,5 +1,18 @@
 import httpClient from "../utils/request";
 
+const data = [
+    {
+        categoryType: 'Truck',
+        name: 'ABC',
+        description: 'Truck'
+    },
+    {
+        categoryType: 'Container',
+        name: 'EFG',
+        description: 'Container Van'
+    }
+]
+
 export class VehicleCategoryService {
 
     static getAllVehicleCategory() {
@@ -13,18 +26,36 @@ export class VehicleCategoryService {
 
             //TODO: WILL REMOVE THIS ONCE INTEGRATED WITH API
             let response = {}
-            response.data = [
-                {
-                    categoryType: 'Truck',
-                    name: 'ABC',
-                    description: 'Truck'
-                },
-                {
-                    categoryType: 'Container',
-                    name: 'EFG',
-                    description: 'Container Van'
-                }
-            ]
+            response.data = data;
+            resolve(response)
+        })
+    }
+
+    static createVehicle(object) {
+        return new Promise((resolve, reject) => {
+            let httpClientObj = httpClient.getInstance();
+            httpClientObj.post('/category', object ).then((response) => {
+                resolve(response)
+            }).catch((error) => {
+                reject(error.message)
+            })
+        })
+    }
+
+    static getVehicle(id){
+        console.log('id', id)
+        return new Promise((resolve, reject) => {
+            // httpClientObj.get('/category/' + id).then((response) => {
+            //     resolve(response)
+            // }).catch((err) => {
+            //     reject(err)
+            // })
+
+            const category = data.find(d => {
+                return d.categoryType === id
+            })
+            let response = {}
+            response.data = category;
             resolve(response)
         })
     }

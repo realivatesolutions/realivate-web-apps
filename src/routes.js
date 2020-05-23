@@ -6,6 +6,7 @@ import {withRouter, Switch, Route, Redirect} from 'react-router-dom'
 import DashboardPage from "./pages/dashboard";
 import VehicleCategoryPage from './pages/vehicle-category'
 import CreateVehicleCategoryPage from './pages/vehicle-category/create-vehicle-category'
+import ViewVehicleCategoryPage from './pages/vehicle-category/view-vehicle-category'
 class Routes extends Component{
     constructor(props) {
         super(props);
@@ -30,6 +31,7 @@ class Routes extends Component{
             <Switch>
                 <Route exact path={'/vehicle'} component={VehicleCategoryPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/vehicle/create'} component={CreateVehicleCategoryPage} {...this.props} onChange={this.onChangeRunActions}/>
+                <Route exact path={'/vehicle/view'} component={ViewVehicleCategoryPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/dashboard'} component={DashboardPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Redirect from="/" to="/dashboard" />
             </Switch>

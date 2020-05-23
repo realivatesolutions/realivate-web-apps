@@ -18,6 +18,7 @@ import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import Routes from './routes'
 import menus from './navigation'
+import { history } from './utils/helper';
 let ps;
 class App extends Component {
     constructor(props) {
@@ -76,7 +77,7 @@ class App extends Component {
                 />
                 <div className={classes.content}>
                     <div className={classes.container}>
-                        <Routes {...this.props}/>
+                        <Routes {...this.props} history={history}/>
                     </div>
                 </div>
                 <Footer />
