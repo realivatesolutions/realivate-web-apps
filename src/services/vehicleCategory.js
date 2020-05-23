@@ -1,5 +1,5 @@
 import httpClient from "../utils/request";
-
+import config from '../config/config';
 const data = [
     {
         categoryType: 'Truck',
@@ -17,17 +17,15 @@ export class VehicleCategoryService {
 
     static getAllVehicleCategory() {
         return new Promise((resolve, reject) => {
-            let httpClientObj = httpClient.getInstance();
-            // httpClientObj.get('/category').then((response) => {
-            //     resolve(response)
-            // }).catch((err) => {
-            //     reject(err)
-            // })
-
-            //TODO: WILL REMOVE THIS ONCE INTEGRATED WITH API
-            let response = {}
-            response.data = data;
-            resolve(response)
+            console.log('config.catalogBaseUrl', config.catalogBaseUrl)
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
+            httpClientObj.get('catalogs').then((response) => {
+                console.log('response', response)
+                resolve(response)
+            }).catch((err) => {
+                console.log(err.message)
+                reject(err)
+            })
         })
     }
 

@@ -1,11 +1,8 @@
 import axios from 'axios'
-import config from '../../config/config';
 
-const BACKEND_URL = config.baseUrl
-
-const getInstance = () => {
+const getInstance = (baseUrl) => {
     let instance = axios.create({
-        baseURL: BACKEND_URL,
+        baseURL: baseUrl,
         timeout: 100000,
         xsrfHeaderName: 'x-csrf-token'
     })

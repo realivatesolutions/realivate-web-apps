@@ -16,6 +16,7 @@ import styles from "../../assets/jss/material-dashboard-react/views/commonStyle"
 import Paper from "@material-ui/core/Paper";
 
 
+
 class VehicleCategoryPage extends Component {
     constructor(props) {
         super(props);
