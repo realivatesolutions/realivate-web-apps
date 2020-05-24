@@ -23,6 +23,21 @@ export default function CustomTable(props) {
     handleViewCategoryEvent(object[uniqueId])
   };
 
+  const getRowData = (object , key )=>{
+    let arr = key.split('.');
+    if(arr.length===1) return object[key];
+    let ctr=1;
+    let param=object;
+    let retval={};
+    arr.forEach( data  =>{
+      param=param[data];
+      retval = Object.assign({},{value:param});
+    }
+    );
+     console.log("EXIT PARAM :" +retval);
+     return retval.value;
+  }
+
   return (
     <div className={classes.tableResponsive}>
       <Table className={classes.table}>
@@ -51,7 +66,7 @@ export default function CustomTable(props) {
                     {tableDataMapping.map((property, key) => {
                       return (
                           <TableCell className={classes.tableCell} key={key} >
-                            {obj[property]}
+                            {getRowData(obj,property)}
                           </TableCell>
                       );
                     })}
