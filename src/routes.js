@@ -7,6 +7,7 @@ import DashboardPage from "./pages/dashboard";
 import VehicleCategoryPage from './pages/vehicle-category'
 import ClientsPage from './pages/clients'
 import CreateClientPage from './pages/clients/create-client'
+import ViewClientPage from './pages/clients/view-client'
 
 import CreateVehicleCategoryPage from './pages/vehicle-category/create-vehicle-category'
 import ViewVehicleCategoryPage from './pages/vehicle-category/view-vehicle-category'
@@ -38,6 +39,7 @@ class Routes extends Component{
                 <Route exact path={'/dashboard'} component={DashboardPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/clients'} component={ClientsPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/clients/create'} component={CreateClientPage} {...this.props} onChange={this.onChangeRunActions}/>
+                <Route exact path={'/clients/view'} component={ViewClientPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Redirect from="/" to="/dashboard" />
             </Switch>
         )

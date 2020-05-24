@@ -16,9 +16,9 @@ export function loadAllClientsFailed(data){
 }
 
 
-export function loadVehicleCategorySuccess(data){
+export function loadClientSuccess(data){
     return{
-        type: types.LOAD_VEHICLE_CATEGORY_SUCCESS,
+        type: types.LOAD_CLIENT_SUCCESS,
         data: data
     }
 }
@@ -43,10 +43,10 @@ function createClient(data) {
     };
 }
 
-function getVehicle(id) {
+function getClient(id) {
     return dispatch => {
-        ClientDataService.getVehicle(id).then( response => {
-            dispatch(loadVehicleCategorySuccess(response.data))
+        ClientDataService.getClient(id).then( response => {
+            dispatch(loadClientSuccess(response.data))
         }).catch( error => {
             dispatch(loadAllClientsFailed(error.message))
         })
@@ -55,5 +55,7 @@ function getVehicle(id) {
 
 export const actions = {
     getAllClients: getAllClients,
-    createClient: createClient
+    createClient: createClient,
+    getClient: getClient
+
 }
