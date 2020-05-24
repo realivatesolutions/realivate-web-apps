@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { bindActionCreators } from "redux";
-import * as globalAction from "../../action/globalAction";
+import { bindActionCreators } from "redux"
 import {withStyles} from "@material-ui/core/styles";
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import GridContainer from "../../components/Grid/GridContainer";
@@ -40,7 +39,7 @@ class ViewServiceCrewPage extends Component {
 
     componentWillReceiveProps(nextProps, nextContext) {
        const { serviceCrewReducer } = nextProps
-        if(!this.state.category && serviceCrewReducer && serviceCrewReducer.selectedCategory){
+        if(!this.state.category && serviceCrewReducer.selectedCategory){
             this.setState({
                 ...this.state,
                 category: serviceCrewReducer.selectedCategory

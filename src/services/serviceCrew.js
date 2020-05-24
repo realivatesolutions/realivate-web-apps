@@ -1,40 +1,36 @@
 import httpClient from "../utils/request";
+import config from '../config/config';
 
-const data = [
-    {
-        categoryType: 'Truck',
-        name: 'ABC',
-        description: 'Truck'
-    },
-    {
-        categoryType: 'Container',
-        name: 'EFG',
-        description: 'Container Van'
-    }
-]
 
 export class ServiceCrewService {
 
     static getAllServiceCrew() {
         return new Promise((resolve, reject) => {
-            let httpClientObj = httpClient.getInstance();
-            // httpClientObj.get('/category').then((response) => {
-            //     resolve(response)
-            // }).catch((err) => {
-            //     reject(err)
-            // })
-
-            //TODO: WILL REMOVE THIS ONCE INTEGRATED WITH API
-            let response = {}
-            response.data = data;
-            resolve(response)
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
+            httpClientObj.get('catalogs/REALIVATE').then((response) => {
+                resolve(response)
+            }).catch((err) => {
+                console.log(err.message)
+                reject(err)
+            })
         })
     }
 
     static createServiceCrew(object) {
         return new Promise((resolve, reject) => {
-            let httpClientObj = httpClient.getInstance();
-            httpClientObj.post('/category', object ).then((response) => {
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
+            httpClientObj.post('catalogs', object ).then((response) => {
+                resolve(response)
+            }).catch((error) => {
+                reject(error.message)
+            })
+        })
+    }
+
+    static updateServiceCrew(object){
+        return new Promise((resolve, reject) => {
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
+            httpClientObj.post('catalogs', object ).then((response) => {
                 resolve(response)
             }).catch((error) => {
                 reject(error.message)
@@ -43,20 +39,14 @@ export class ServiceCrewService {
     }
 
     static getServiceCrew(id){
-        console.log('id', id)
         return new Promise((resolve, reject) => {
-            // httpClientObj.get('/category/' + id).then((response) => {
-            //     resolve(response)
-            // }).catch((err) => {
-            //     reject(err)
-            // })
-
-            const category = data.find(d => {
-                return d.categoryType === id
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
+            httpClientObj.get('catalogs/' + id).then((response) => {
+                resolve(response)
+            }).catch((err) => {
+                console.log(err.message)
+                reject(err)
             })
-            let response = {}
-            response.data = category;
-            resolve(response)
         })
     }
 }

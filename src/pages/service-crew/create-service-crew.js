@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from "redux";
-import * as globalAction from "../../action/globalAction";
 import {withStyles} from "@material-ui/core/styles";
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import GridContainer from "../../components/Grid/GridContainer";
@@ -20,7 +19,8 @@ class CreateServiceCrewPage extends Component {
         super(props);
         this.state = {
             category:{
-                categoryType: ''
+                categoryType: 'SERVICE_CREWS',
+                clientRealm: 'REALIVATE'
             }
         }
         this.handleChange = this.handleChange.bind(this)
@@ -38,7 +38,7 @@ class CreateServiceCrewPage extends Component {
     };
 
     handleSubmit() {
-        this.props.actions.createServiceCrew(this.state)
+        this.props.actions.createServiceCrew(this.state.category)
         this.props.history.push('/service-crew')
     }
 
@@ -62,17 +62,6 @@ class CreateServiceCrewPage extends Component {
                                 <Paper className={classes.contentRoot} elevation={1}>
                                     <form className={classes.container}>
                                         <GridContainer>
-                                            <GridItem xs={12} sm={12} md={7}>
-                                                <TextField
-                                                    labelText="Category Type"
-                                                    id="categoryType"
-                                                    value={this.state.category.categoryType}
-                                                    onChange={this.handleChange}
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                />
-                                            </GridItem>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
                                                     labelText="Name"

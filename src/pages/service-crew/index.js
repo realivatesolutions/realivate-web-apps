@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from "redux";
-import * as globalAction from '../../action/globalAction'
 import { withStyles} from "@material-ui/core/styles";
 import GridContainer from "../../components/Grid/GridContainer";
 import GridItem from "../../components/Grid/GridItem";
@@ -21,12 +20,21 @@ class ServiceCrewPage extends Component {
         super(props);
         this.handleAddServiceCrewEvent = this.handleAddServiceCrewEvent.bind(this)
         this.handleViewServiceCrewEvent = this.handleViewServiceCrewEvent.bind(this)
+    }
 
+    componentDidMount() {
         this.props.actions.getAllServiceCrew()
     }
 
     handleAddServiceCrewEvent() {
         this.props.history.push('/service-crew/create')
+    }
+
+    handleEditCategoryEvent = value => {
+        this.props.history.push({
+            pathname: '/service-crew/edit',
+            state: { id : value }
+        })
     }
 
     handleViewServiceCrewEvent = value => {
@@ -71,7 +79,8 @@ class ServiceCrewPage extends Component {
                                         tableData={serviceCrewList}
                                         handleAddCategoryEvent={this.handleAddServiceCrewEvent}
                                         handleViewCategoryEvent={this.handleViewServiceCrewEvent}
-                                        uniqueId={'categoryType'}
+                                        handleEditCategoryEvent={this.handleEditCategoryEvent}
+                                        uniqueId={'id'}
                                     />
                                 </Paper>
                             </CardBody>

@@ -6,7 +6,7 @@ export class VehicleCategoryService {
     static getAllVehicleCategory() {
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            httpClientObj.get('catalogs').then((response) => {
+            httpClientObj.get('catalogs/REALIVATE').then((response) => {
                 resolve(response)
             }).catch((err) => {
                 console.log(err.message)

@@ -11,6 +11,7 @@ import EditVehicleCategoryPage from './pages/vehicle-category/edit-vehicle-categ
 import ServiceCrewPage from './pages/service-crew'
 import CreateServiceCrewPage from './pages/service-crew/create-service-crew'
 import ViewServiceCrewPage from './pages/service-crew/view-service-crew'
+import EditServiceCrewPage from './pages/service-crew/edit-service-crew'
 class Routes extends Component{
     constructor(props) {
         super(props);
@@ -40,6 +41,7 @@ class Routes extends Component{
                 <Route exact path={'/service-crew'} component={ServiceCrewPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/service-crew/create'} component={CreateServiceCrewPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/service-crew/view'} component={ViewServiceCrewPage} {...this.props} onChange={this.onChangeRunActions}/>
+                <Route exact path={'/service-crew/edit'} component={EditServiceCrewPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/dashboard'} component={DashboardPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Redirect from="/" to="/dashboard" />
             </Switch>

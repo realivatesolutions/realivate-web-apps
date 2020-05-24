@@ -53,8 +53,18 @@ function getServiceCrew(id) {
     };
 }
 
+function updateServiceCrew(data){
+    return dispatch => {
+        ServiceCrewService.updateServiceCrew(data).then( response => {
+        }).catch( error => {
+            dispatch(loadServiceCrewsFailed(error.message))
+        })
+    };
+}
+
 export const actions = {
     getAllServiceCrew: getAllServiceCrew,
     createServiceCrew: createServiceCrew,
-    getServiceCrew: getServiceCrew
+    getServiceCrew: getServiceCrew,
+    updateServiceCrew: updateServiceCrew
 }
