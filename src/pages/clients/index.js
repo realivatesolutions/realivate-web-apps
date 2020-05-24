@@ -39,7 +39,8 @@ class ClientsPage extends Component {
 
     render() {
         const { classes, clientsReducer } = this.props;
-        const clients = clientsReducer.data
+        const clientsList = clientsReducer.data
+        
         return (
             <div>
                 <GridContainer>
@@ -66,12 +67,12 @@ class ClientsPage extends Component {
                                         withActionView={true}
                                         withActionEdit={true}
                                         tableHeaderColor="gray"
-                                        tableHead={[ "Name", "Address", "Contact Person", "Contact Info" , "Status"]}
-                                        tableDataMapping={[ "name", "address", "contactPerson", "contactInfo","status"]}
-                                        tableData={clients}
+                                        tableHead={[ "Name", "Contact Person", "Contact Info" , "Status"]}
+                                        tableDataMapping={[ "name", "data.client.contactPerson", "name","name"]}
+                                        tableData={clientsList}
                                         handleAddClientEvent={this.handleAddClientEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
-                                        uniqueId={'categoryType'}
+                                        uniqueId={'name'}
                                     />
                                 </Paper>
                             </CardBody>

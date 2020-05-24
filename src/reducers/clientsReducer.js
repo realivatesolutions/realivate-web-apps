@@ -7,7 +7,7 @@ let initialState = {
 export default function clientsReducer(state = initialState, action) {
 
     switch (action.type){
-        case types.LOAD_ALL_VEHICLE_CATEGORY_SUCCESS:
+        case types.LOAD_ALL_CLIENTS_SUCCESS:
             return{
                 ...state,
                 data: action.data

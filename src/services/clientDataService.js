@@ -6,10 +6,10 @@ import DataBuilder from './dataBuilder';
 
 export class ClientDataService {
 
-    static getAllVehicleCategory() {
+    static getAllClients() {
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            httpClientObj.get('catalogs').then((response) => {
+            httpClientObj.get('catalogs/'+ config.clientRealm+'/categoryType/'+config.clientsPath).then((response) => {
                 resolve(response)
             }).catch((err) => {
                 console.log(err.message)

@@ -2,16 +2,16 @@ import ClientDataService from '../services/clientDataService'
 import * as types from '../action/actionTypes'
 
 
-export function loadAllVehicleCategoriesSuccess(data){
+export function loadAllClientsSuccess(data){
     return{
-        type: types.LOAD_ALL_VEHICLE_CATEGORY_SUCCESS,
+        type: types.LOAD_ALL_CLIENTS_SUCCESS,
         data: data
     }
 }
 
-export function loadVehicleCategoriesFailed(data){
+export function loadAllClientsFailed(data){
     return{
-        type: types.LOAD_ALL_VEHICLE_CATEGORY_FAILED
+        type: types.LOAD_ALL_CLIENTS_FAILED
     }
 }
 
@@ -25,10 +25,10 @@ export function loadVehicleCategorySuccess(data){
 
 function getAllClients(){
     return dispatch => {
-        ClientDataService.getAllVehicleCategory().then( response => {
-            dispatch(loadAllVehicleCategoriesSuccess(response.data))
+        ClientDataService.getAllClients().then( response => {
+            dispatch(loadAllClientsSuccess(response.data))
         }).catch( error => {
-            dispatch(loadVehicleCategoriesFailed(error.message))
+            dispatch(loadAllClientsFailed(error.message))
         })
     };
 }
@@ -38,7 +38,7 @@ function createClient(data) {
         ClientDataService.createClient(data).then( response => {
 
         }).catch( error => {
-            dispatch(loadVehicleCategoriesFailed(error.message))
+            dispatch(loadAllClientsFailed(error.message))
         })
     };
 }
@@ -48,7 +48,7 @@ function getVehicle(id) {
         ClientDataService.getVehicle(id).then( response => {
             dispatch(loadVehicleCategorySuccess(response.data))
         }).catch( error => {
-            dispatch(loadVehicleCategoriesFailed(error.message))
+            dispatch(loadAllClientsFailed(error.message))
         })
     };
 }
