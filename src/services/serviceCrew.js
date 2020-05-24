@@ -7,7 +7,7 @@ export class ServiceCrewService {
     static getAllServiceCrew() {
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            httpClientObj.get('catalogs/REALIVATE').then((response) => {
+            httpClientObj.get('catalogs/REALIVATE/categoryType/SERVICE_CREWS').then((response) => {
                 resolve(response)
             }).catch((err) => {
                 console.log(err.message)
