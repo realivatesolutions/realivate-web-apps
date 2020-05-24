@@ -80,16 +80,6 @@ class EditServiceCrewPage extends Component {
                                         <GridContainer>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
-                                                    id="categoryType"
-                                                    value={this.state.category && this.state.category.categoryType}
-                                                    onChange={this.handleChange}
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                />
-                                            </GridItem>
-                                            <GridItem xs={12} sm={12} md={7}>
-                                                <TextField
                                                     id="name"
                                                     value={this.state.category && this.state.category.name}
                                                     onChange={this.handleChange}
