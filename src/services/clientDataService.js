@@ -1,5 +1,8 @@
 import httpClient from "../utils/request";
 import config from '../config/config';
+import DataBuilder from './dataBuilder';
+
+
 
 export class ClientDataService {
 
@@ -17,9 +20,10 @@ export class ClientDataService {
 
     static createClient(object) {
         return new Promise((resolve, reject) => {
-            let httpClientObj = httpClient.getInstance(config.realivateOpsBaseUrL);
-            console.log(object);
-            httpClientObj.post('catalogs', object ).then((response) => {
+            let httpClientObj = httpClient.getInstance(config.realivateOpsBaseUrl);
+
+            let data = DataBuilder.buildCreateData(object);
+            httpClientObj.post('catalogs', data ).then((response) => {
                 resolve(response)
             }).catch((error) => {
                 reject(error.message)
