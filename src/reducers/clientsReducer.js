@@ -17,7 +17,7 @@ export default function clientsReducer(state = initialState, action) {
                 ...state,
                 selectedClient: action.data
             }
-        case types.LOAD_ALL_VEHICLE_CATEGORY_FAILED:
+        case types.LOAD_ALL_CLIENTS_FAILED:
             return{
                 ...state,
                 data: []
