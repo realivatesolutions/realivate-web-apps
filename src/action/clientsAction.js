@@ -53,9 +53,19 @@ function getClient(id) {
     };
 }
 
+function updateClient(data){
+    return dispatch => {
+        ClientDataService.updateClient(data).then( response => {
+        }).catch( error => {
+            dispatch(loadAllClientsFailed(error.message))
+        })
+    };
+}
+
 export const actions = {
     getAllClients: getAllClients,
     createClient: createClient,
-    getClient: getClient
+    getClient: getClient,
+    updateClient: updateClient
 
 }

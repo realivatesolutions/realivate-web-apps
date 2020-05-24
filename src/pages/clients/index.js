@@ -37,6 +37,13 @@ class ClientsPage extends Component {
 
     }
 
+    handleEditCategoryEvent = value => {
+        this.props.history.push({
+            pathname: '/clients/edit',
+            state: { id : value }
+        })
+    }
+
     render() {
         const { classes, clientsReducer } = this.props;
         const clientsList = clientsReducer.data
@@ -72,6 +79,7 @@ class ClientsPage extends Component {
                                         tableData={clientsList}
                                         handleAddClientEvent={this.handleAddClientEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
+                                        handleEditCategoryEvent={this.handleEditCategoryEvent}
                                         uniqueId={'name'}
                                     />
                                 </Paper>

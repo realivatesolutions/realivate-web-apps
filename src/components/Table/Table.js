@@ -16,14 +16,18 @@ const useStyles = makeStyles(styles);
 
 export default function CustomTable(props) {
   const classes = useStyles();
-  const { uniqueId, tableHead, tableDataMapping, tableData, tableHeaderColor,  withActionView, withActionEdit, withActionDelete, handleViewCategoryEvent } = props;
+  const { uniqueId, tableHead, tableDataMapping, tableData, tableHeaderColor,  withActionView, withActionEdit, withActionDelete, handleViewCategoryEvent, handleEditCategoryEvent } = props;
   const hasAction = withActionView || withActionEdit || withActionDelete || false
 
-  const viewEventHandler = (object) => {
-    handleViewCategoryEvent(object[uniqueId])
+  const eventHandler = (object, action) => {
+    if(action === 'VIEW'){
+      handleViewCategoryEvent(object[uniqueId])
+    }else {
+      handleEditCategoryEvent(object[uniqueId])
+    }
   };
 
-  const getRowData = (object , key )=>{
+   const getRowData = (object , key )=>{
     let arr = key.split('.');
     if(arr.length===1) return object[key];
     let ctr=1;
@@ -72,12 +76,12 @@ export default function CustomTable(props) {
                     })}
                     { hasAction && <TableCell className={classes.tableCell} key={'action'} align={'center'}>
                       { withActionView &&
-                      <IconButton className={classes.button} aria-label="View" onClick={() => { viewEventHandler(obj) }}>
+                      <IconButton className={classes.button} aria-label="View" onClick={() => { eventHandler(obj, 'VIEW') }}>
                         <InfoIcon />
                       </IconButton>
                       }
                       { withActionEdit &&
-                      <IconButton className={classes.button} aria-label="Edit" component='a' href={'#'}>
+                      <IconButton className={classes.button} aria-label="Edit" onClick={() => { eventHandler(obj, 'EDIT') }}>
                         <EditIcon />
                       </IconButton>
                       }
