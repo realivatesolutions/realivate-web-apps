@@ -1,1 +1,1 @@
-export * from './vehicleCategory';
+export * from './clientDataService';

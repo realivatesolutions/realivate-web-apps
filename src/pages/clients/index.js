@@ -22,7 +22,7 @@ class ClientsPage extends Component {
         this.handleAddClientEvent = this.handleAddClientEvent.bind(this)
         this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
 
-        this.props.actions.getAllVehicle()
+        this.props.actions.getAllClients()
     }
 
     handleAddClientEvent() {

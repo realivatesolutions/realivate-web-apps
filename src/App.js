@@ -19,17 +19,29 @@ import Footer from "./components/Footer";
 import Routes from './routes'
 import menus from './navigation'
 import { history } from './utils/helper';
+import Keycloak from 'keycloak-js';
+
 let ps;
 class App extends Component {
     constructor(props) {
         super(props);
         this.mainPanel = React.createRef();
         this.state ={
+            keycloak: null,
+            authenticated: false,
             image: bgImage,
             color: "blue",
             fixedClasses: "dropdown show",
             mobileOpen: false,
         }
+    }
+
+    componentDidMount(){
+        const keycloak = Keycloak('/keycloak.json');
+        keycloak.init({onLoad: 'login-required'}).then(authenticated => {
+        this.setState({ keycloak: keycloak, authenticated: authenticated })
+        })
+
     }
 
     componentWillReceiveProps(nextProps, nextContext) {

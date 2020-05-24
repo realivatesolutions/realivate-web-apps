@@ -1,4 +1,4 @@
-import VehicleCategoryService from '../services/vehicleCategory'
+import ClientDataService from '../services/clientDataService'
 import * as types from '../action/actionTypes'
 
 
@@ -23,9 +23,9 @@ export function loadVehicleCategorySuccess(data){
     }
 }
 
-function getAllVehicle(){
+function getAllClients(){
     return dispatch => {
-        VehicleCategoryService.getAllVehicleCategory().then( response => {
+        ClientDataService.getAllVehicleCategory().then( response => {
             dispatch(loadAllVehicleCategoriesSuccess(response.data))
         }).catch( error => {
             dispatch(loadVehicleCategoriesFailed(error.message))
@@ -33,9 +33,9 @@ function getAllVehicle(){
     };
 }
 
-function createVehicle(data) {
+function createClient(data) {
     return dispatch => {
-        VehicleCategoryService.createVehicle(data).then( response => {
+        ClientDataService.createClient(data).then( response => {
 
         }).catch( error => {
             dispatch(loadVehicleCategoriesFailed(error.message))
@@ -45,7 +45,7 @@ function createVehicle(data) {
 
 function getVehicle(id) {
     return dispatch => {
-        VehicleCategoryService.getVehicle(id).then( response => {
+        ClientDataService.getVehicle(id).then( response => {
             dispatch(loadVehicleCategorySuccess(response.data))
         }).catch( error => {
             dispatch(loadVehicleCategoriesFailed(error.message))
@@ -54,7 +54,6 @@ function getVehicle(id) {
 }
 
 export const actions = {
-    getAllVehicle: getAllVehicle,
-    createVehicle: createVehicle,
-    getVehicle: getVehicle
+    getAllClients: getAllClients,
+    createClient: createClient
 }

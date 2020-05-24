@@ -19,8 +19,10 @@ class CreateClientPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            category:{
-                categoryType: ''
+            client:{
+                categoryType: 'CLIENT'
+                
+
             }
         }
         this.handleChange = this.handleChange.bind(this)
@@ -30,16 +32,16 @@ class CreateClientPage extends Component {
 
     handleChange(e) {
         this.setState({
-            category: {
-                ...this.state.category,
+            client: {
+                ...this.state.client,
                 [e.target.id]: e.target.value
             }
         })
     };
 
     handleSubmit() {
-        this.props.actions.createVehicle(this.state)
-        this.props.history.push('/vehicle')
+        this.props.actions.createClient(this.state)
+        this.props.history.push('/clients')
     }
 
     handleCancelEventButton(){
@@ -66,7 +68,7 @@ class CreateClientPage extends Component {
                                                 <TextField
                                                     labelText="Client Name"
                                                     id="clientName"
-                                                    value={this.state.category.categoryType}
+                                                    value={this.state.client.clientName}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -77,7 +79,7 @@ class CreateClientPage extends Component {
                                                 <TextField
                                                     labelText="Business Name"
                                                     id="businessName"
-                                                    value={this.state.category.name}
+                                                    value={this.state.client.businessName}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -88,7 +90,7 @@ class CreateClientPage extends Component {
                                                 <TextField
                                                     labelText="Address"
                                                     id="address"
-                                                    value={this.state.category.description}
+                                                    value={this.state.client.address}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -99,7 +101,7 @@ class CreateClientPage extends Component {
                                                 <TextField
                                                     labelText="Contact Person"
                                                     id="contactPerson"
-                                                    value={this.state.category.description}
+                                                    value={this.state.client.contactPerson}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
