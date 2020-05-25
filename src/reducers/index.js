@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import dashboardReducer from "./dashboardReducer";
-import vehicleCategoryReducer from "./vehicleCategoryReducer";
 import clientsReducer from "./clientsReducer";
 
 const  rootReducer = (state, action)=> {
@@ -9,7 +8,6 @@ const  rootReducer = (state, action)=> {
 
 const appReducer = combineReducers({
     dashboardReducer,
-    vehicleCategoryReducer,
     clientsReducer
 })
 

@@ -37,13 +37,6 @@ const dashboardRoutes = [
         layout: "/"
     },
     {
-        path: "vehicle",
-        name: "Vehicle Catalog",
-        icon: Person,
-        component: DashboardPage,
-        layout: "/"
-    },
-    {
         path: "clients",
         name: "Clients",
         icon: Person,

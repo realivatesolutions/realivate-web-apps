@@ -31,10 +31,17 @@ class ClientsPage extends Component {
 
     handleViewCategoryEvent = value => {
         this.props.history.push({
-            pathname: '/vehicle/view',
+            pathname: '/clients/view',
             state: { id : value }
         })
 
+    }
+
+    handleEditCategoryEvent = value => {
+        this.props.history.push({
+            pathname: '/clients/edit',
+            state: { id : value }
+        })
     }
 
     render() {
@@ -67,11 +74,12 @@ class ClientsPage extends Component {
                                         withActionView={true}
                                         withActionEdit={true}
                                         tableHeaderColor="gray"
-                                        tableHead={[ "Name", "Contact Person", "Contact Info" , "Status"]}
-                                        tableDataMapping={[ "name", "data.client.contactPerson", "name","name"]}
+                                        tableHead={[ "Client Name", "Business Name", "Contact Person" , "Status"]}
+                                        tableDataMapping={[ "name", "data.client.businessName", "data.client.contactPerson","status"]}
                                         tableData={clientsList}
                                         handleAddClientEvent={this.handleAddClientEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
+                                        handleEditCategoryEvent={this.handleEditCategoryEvent}
                                         uniqueId={'name'}
                                     />
                                 </Paper>

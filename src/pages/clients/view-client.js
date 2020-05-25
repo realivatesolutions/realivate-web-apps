@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from "redux";
-import * as globalAction from "../../action/globalAction";
 import {withStyles} from "@material-ui/core/styles";
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import GridContainer from "../../components/Grid/GridContainer";
@@ -13,41 +12,45 @@ import GridItem from "../../components/Grid/GridItem";
 import TextField from "../../components/CustomInput"
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
-import {actions as vehicleCategoryActions} from '../../action/vehicleCategoryAction'
+import {actions as clientsAction} from '../../action/clientsAction'
 
-class CreateVehicleCategoryPage extends Component {
+class ViewClientPage extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            category:{
-                categoryType: ''
-            }
+            client: undefined,
+            id: props.location && props.location.state && props.location.state.id || undefined
         }
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+
         this.handleCancelEventButton = this.handleCancelEventButton.bind(this)
     }
 
-    handleChange(e) {
-        this.setState({
-            category: {
-                ...this.state.category,
-                [e.target.id]: e.target.value
-            }
-        })
-    };
-
-    handleSubmit() {
-        this.props.actions.createVehicle(this.state)
-        this.props.history.push('/vehicle')
+    handleCancelEventButton(){
+        this.props.history.push('/clients')
     }
 
-    handleCancelEventButton(){
-        this.props.history.push('/vehicle')
+    componentDidMount() {
+        if(this.state && this.state.id){
+            this.props.actions.getClient(this.state.id);
+        }else{
+            this.props.history.push('/clients')
+        }
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+       const { clientsReducer } = nextProps
+        if(!this.state.client && clientsReducer.selectedClient){
+            this.setState({
+                ...this.state,
+                client: clientsReducer.selectedClient
+            })
+        }
     }
 
     render() {
         const {classes} = this.props
+        console.log(this.state.client)
         return (
             <div>
                 <GridContainer>
@@ -55,7 +58,7 @@ class CreateVehicleCategoryPage extends Component {
                         <Card plain>
                             <CardHeader plain color="info">
                                 <h4 className={classes.cardTitleWhite}>
-                                    Create Vehicle Category
+                                    View Client Details
                                 </h4>
                             </CardHeader>
                             <CardBody>
@@ -64,34 +67,49 @@ class CreateVehicleCategoryPage extends Component {
                                         <GridContainer>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
-                                                    labelText="Category Type"
-                                                    id="categoryType"
-                                                    value={this.state.category.categoryType}
-                                                    onChange={this.handleChange}
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                />
-                                            </GridItem>
-                                            <GridItem xs={12} sm={12} md={7}>
-                                                <TextField
-                                                    labelText="Name"
                                                     id="name"
-                                                    value={this.state.category.name}
-                                                    onChange={this.handleChange}
+                                                    value={this.state.client && this.state.client.name}
                                                     formControlProps={{
                                                         fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
                                                     }}
                                                 />
                                             </GridItem>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
-                                                    labelText="Description"
-                                                    id="description"
-                                                    value={this.state.category.description}
-                                                    onChange={this.handleChange}
+                                                    id="businessName"
+                                                    value={this.state.client && this.state.client.data.client.businessName}
                                                     formControlProps={{
                                                         fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                                <TextField
+                                                    id="contactPerson"
+                                                    value={this.state.client && this.state.client.data.client.contactPerson}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                             <GridItem xs={12} sm={12} md={7}>
+                                                <TextField
+                                                    id="address"
+                                                    value={this.state.client && this.state.client.data.client.address}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
                                                     }}
                                                 />
                                             </GridItem>
@@ -101,9 +119,6 @@ class CreateVehicleCategoryPage extends Component {
                                         <GridContainer>
                                             <GridItem xs={12} sm={12} md={5}>
                                                 <GridContainer>
-                                                    <GridItem xs={12} sm={12} md={3}>
-                                                        <Button color="info"  size={'lg'} onClick={() => this.handleSubmit()}>Save</Button>
-                                                    </GridItem>
                                                     <GridItem xs={12} sm={12} md={3}>
                                                         <Button color="info" size={'lg'} onClick={this.handleCancelEventButton}>Cancel</Button>
                                                     </GridItem>
@@ -125,16 +140,16 @@ class CreateVehicleCategoryPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        vehicleCategoryReducer: state.vehicleCategoryReducer
+       clientsReducer: state.clientsReducer
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({...vehicleCategoryActions}, dispatch)
+        actions: bindActionCreators({...clientsAction}, dispatch)
     }
 }
 
 export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateVehicleCategoryPage))
+    connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ViewClientPage))
 )

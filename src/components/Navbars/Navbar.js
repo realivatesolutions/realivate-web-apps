@@ -19,7 +19,6 @@ import styles from "../../assets/jss/material-dashboard-react/components/headerS
 const useStyles = makeStyles(styles);
 
 export default function Header(props) {
-  console.log('props', props)
   const classes = useStyles();
   function makeBrand() {
     var name;

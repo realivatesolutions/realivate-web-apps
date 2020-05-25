@@ -2,7 +2,7 @@ import * as types from '../action/actionTypes'
 
 let initialState = {
     data: [],
-    selectedCategory: {}
+    selectedClient: {}
 }
 export default function clientsReducer(state = initialState, action) {
 
@@ -12,13 +12,12 @@ export default function clientsReducer(state = initialState, action) {
                 ...state,
                 data: action.data
             }
-        case types.LOAD_VEHICLE_CATEGORY_SUCCESS:
-            console.log(action)
+        case types.LOAD_CLIENT_SUCCESS:
             return {
                 ...state,
-                selectedCategory: action.data
+                selectedClient: action.data
             }
-        case types.LOAD_ALL_VEHICLE_CATEGORY_FAILED:
+        case types.LOAD_ALL_CLIENTS_FAILED:
             return{
                 ...state,
                 data: []
