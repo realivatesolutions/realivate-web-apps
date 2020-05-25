@@ -1,4 +1,5 @@
 import axios from 'axios'
+import config from '../../config/config';
 
 const getInstance = (baseUrl) => {
     let instance = axios.create({
@@ -10,6 +11,7 @@ const getInstance = (baseUrl) => {
     instance.interceptors.request.use((config) => {
         config.headers.post['Content-Type'] = 'application/json';
         config.headers.put['Content-Type'] = 'application/json';
+        config.headers.common['x-api-key'] = '6BlVpkck6Vadda9rRMonv4fTnZb4uuMG5DyzFfCw';
         return config
     }, (error) => {
         return Promise.reject(error)

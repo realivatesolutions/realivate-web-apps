@@ -25,8 +25,14 @@ export default function Index(props) {
     labelProps,
     inputProps,
     error,
-    success
+    success,
+    required
   } = props;
+
+  const eventHandler = (e) => {
+    if(e.target.value) e.target.value = e.target.value.toUpperCase()
+    if(onChange) onChange(e)
+  };
 
   const labelClasses = classNames({
     [" " + classes.labelRootError]: error,
@@ -61,9 +67,10 @@ export default function Index(props) {
           disabled: classes.disabled,
           underline: underlineClasses
         }}
-        onChange={onChange && onChange}
+        onChange={eventHandler}
         id={id}
         {...inputProps}
+        required={required}
       />
       {error ? (
         <Clear className={classes.feedback + " " + classes.labelRootError} />
