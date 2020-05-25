@@ -54,7 +54,7 @@ class EditServiceCrewPage extends Component {
     };
 
     handleSubmit() {
-        this.props.actions.updateVehicle(this.state.category)
+        this.props.actions.updateServiceCrew(this.state.category)
         this.props.history.push('/service-crew')
     }
 

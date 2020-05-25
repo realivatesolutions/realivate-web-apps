@@ -7,7 +7,7 @@ export class ServiceCrewService {
     static getAllServiceCrew() {
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            httpClientObj.get('catalogs/REALIVATE/categoryType/SERVICE_CREWS').then((response) => {
+            httpClientObj.get('catalogs/' + config.clientRealm + '/categoryType/SERVICE_CREWS').then((response) => {
                 resolve(response)
             }).catch((err) => {
                 console.log(err.message)
@@ -41,7 +41,7 @@ export class ServiceCrewService {
     static getServiceCrew(id){
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            httpClientObj.get('catalogs/' + id).then((response) => {
+            httpClientObj.get('catalogs/' + config.clientRealm + '/' + id).then((response) => {
                 resolve(response)
             }).catch((err) => {
                 console.log(err.message)
