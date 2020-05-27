@@ -18,7 +18,7 @@ class EditServiceCrewPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            category: undefined,
+            crew: undefined,
             id: props.location && props.location.state && props.location.state.id || undefined
         }
         this.handleChange = this.handleChange.bind(this)
@@ -36,25 +36,30 @@ class EditServiceCrewPage extends Component {
 
     componentWillReceiveProps(nextProps, nextContext) {
         const { serviceCrewReducer } = nextProps
-        if(!this.state.category && serviceCrewReducer.selectedCategory){
+        if(!this.state.crew && serviceCrewReducer.selectedCategory){
             this.setState({
                 ...this.state,
-                category: serviceCrewReducer.selectedCategory
+                crew: serviceCrewReducer.selectedCategory
             })
         }
     }
 
     handleChange(e) {
         this.setState({
-            category: {
-                ...this.state.category,
-                [e.target.id]: e.target.value
+            crew: {
+                ...this.state.crew,
+                data: {
+                    ...this.state.crew.data,
+                    [e.target.id]: e.target.value
+                }
             }
         })
     };
 
     handleSubmit() {
-        this.props.actions.updateServiceCrew(this.state.category)
+        this.state.crew.name = this.state.crew.data.firstName +  ' ' +  this.state.crew.data.middleName +  ' ' + this.state.crew.data.lastName;
+        this.state.crew.description = this.state.crew.name;
+        this.props.actions.updateServiceCrew(this.state.crew)
         this.props.history.push('/service-crew')
     }
 
@@ -80,8 +85,8 @@ class EditServiceCrewPage extends Component {
                                         <GridContainer>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
-                                                    id="name"
-                                                    value={this.state.category && this.state.category.name}
+                                                    id="firstName"
+                                                    value={this.state.crew && this.state.crew.data && this.state.crew.data.firstName}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -90,8 +95,58 @@ class EditServiceCrewPage extends Component {
                                             </GridItem>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
-                                                    id="description"
-                                                    value={this.state.category && this.state.category.description}
+                                                    id="middleName"
+                                                    value={this.state.crew && this.state.crew.data && this.state.crew.data.middleName}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                                <TextField
+                                                    id="lastName"
+                                                    value={this.state.crew && this.state.crew.data && this.state.crew.data.lastName}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                                <TextField
+                                                    id="email"
+                                                    value={this.state.crew && this.state.crew.data && this.state.crew.data.email}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                                <TextField
+                                                    id="gender"
+                                                    value={this.state.crew && this.state.crew.data && this.state.crew.data.gender}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                                <TextField
+                                                    id="contactNo"
+                                                    value={this.state.crew && this.state.crew.data && this.state.crew.data.contactNo}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                                <TextField
+                                                    id="address"
+                                                    value={this.state.crew && this.state.crew.data && this.state.crew.data.address}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
