@@ -19,7 +19,7 @@ class CreateVehicleCategoryPage extends Component {
         super(props);
         this.state = {
             category:{
-                categoryType: '',
+                categoryType: 'VEHICLE',
                 clientRealm: 'REALIVATE'
             }
         }
@@ -62,17 +62,6 @@ class CreateVehicleCategoryPage extends Component {
                                 <Paper className={classes.contentRoot} elevation={1}>
                                     <form className={classes.container}>
                                         <GridContainer>
-                                            <GridItem xs={12} sm={12} md={7}>
-                                                <TextField
-                                                    labelText="Category Type"
-                                                    id="categoryType"
-                                                    value={this.state.category.categoryType}
-                                                    onChange={this.handleChange}
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                />
-                                            </GridItem>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
                                                     labelText="Name"

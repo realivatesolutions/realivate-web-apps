@@ -43,7 +43,7 @@ class Routes extends Component{
                 <Route exact path={'/service-crew/view'} component={ViewServiceCrewPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/service-crew/edit'} component={EditServiceCrewPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/dashboard'} component={DashboardPage} {...this.props} onChange={this.onChangeRunActions}/>
-                <Redirect from="/" to="/dashboard" />
+                {/*<Redirect from="/" to="/dashboard" />*/}
             </Switch>
         )
     }

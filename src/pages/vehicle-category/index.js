@@ -10,11 +10,30 @@ import Table from "../../components/Table/Table";
 import Button from "../../components/CustomButtons";
 import CardBody from "../../components/Card/CardBody";
 import CardHeader from "../../components/Card/CardHeader";
+import CustomDataTable from '../../components/CustomDataTable'
 import {actions as vehicleCategoryActions} from '../../action/vehicleCategoryAction'
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import Paper from "@material-ui/core/Paper";
 
+function createData(name, calories, fat, carbs, protein) {
+    return { name, calories, fat, carbs, protein };
+}
 
+const dataList = [
+    createData('Cupcake', 305, 3.7, 67, 4.3),
+    createData('Donut', 452, 25.0, 51, 4.9),
+    createData('Eclair', 262, 16.0, 24, 6.0),
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+    createData('Gingerbread', 356, 16.0, 49, 3.9),
+    createData('Honeycomb', 408, 3.2, 87, 6.5),
+    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+    createData('Jelly Bean', 375, 0.0, 94, 0.0),
+    createData('KitKat', 518, 26.0, 65, 7.0),
+    createData('Lollipop', 392, 0.2, 98, 0.0),
+    createData('Marshmallow', 318, 0, 81, 2.0),
+    createData('Nougat', 360, 19.0, 9, 37.0),
+    createData('Oreo', 437, 18.0, 63, 4.0),
+];
 
 class VehicleCategoryPage extends Component {
     constructor(props) {
@@ -49,8 +68,14 @@ class VehicleCategoryPage extends Component {
     render() {
         const { classes, vehicleCategoryReducer } = this.props;
         const vehicleList = vehicleCategoryReducer.data
-        console.log('vehicleList', vehicleList)
+        const tableHeadMapping = [
+            { id: 'categoryType', numeric: false, disablePadding: true, label: 'Category Type' },
+            { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
+            { id: 'description', numeric: false, disablePadding: false, label: 'Description' },
+            { id: 'action', numeric: false, disablePadding: false, label: '' }
+        ];
         return (
+
             <div>
                 <GridContainer>
                     <GridItem xs={12} sm={12} md={12}>
@@ -72,17 +97,17 @@ class VehicleCategoryPage extends Component {
                                 </GridContainer>
                                 <br/>
                                 <Paper className={classes.contentRoot} elevation={1}>
-                                    <Table
+                                    <CustomDataTable
+                                        uniqueId={'id'}
+                                        tableHeaderColor="gray"
+                                        hasCheckBox={false}
                                         withActionView={true}
                                         withActionEdit={true}
-                                        tableHeaderColor="gray"
-                                        tableHead={[ "Type", "Name", "Description", ""]}
-                                        tableDataMapping={[ "categoryType", "name", "description"]}
                                         tableData={vehicleList}
+                                        tableDataMapping={tableHeadMapping}
                                         handleAddCategoryEvent={this.handleAddCategoryEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
                                         handleEditCategoryEvent={this.handleEditCategoryEvent}
-                                        uniqueId={'id'}
                                     />
                                 </Paper>
                             </CardBody>

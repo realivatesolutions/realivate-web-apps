@@ -11,7 +11,11 @@ const getInstance = (baseUrl) => {
     instance.interceptors.request.use((config) => {
         config.headers.post['Content-Type'] = 'application/json';
         config.headers.put['Content-Type'] = 'application/json';
+<<<<<<< HEAD
         config.headers.common['x-api-key'] = apiKey;
+=======
+        config.headers.common['x-api-key'] = '6BlVpkck6Vadda9rRMonv4fTnZb4uuMG5DyzFfCw';
+>>>>>>> 05099a84584d60a9a8da4a377765fb083edb076a
         return config
     }, (error) => {
         return Promise.reject(error)

@@ -33,16 +33,18 @@ export default function CustomTable(props) {
         {tableHead !== undefined ? (
           <TableHead className={classes[tableHeaderColor + "TableHeader"]}>
             <TableRow className={classes.tableHeadRow}>
-              {tableHead.map((prop, key) => {
-                return (
-                  <TableCell
-                    className={classes.tableCell + " " + classes.tableHeadCell}
-                    key={key}
-                  >
-                    {prop}
-                  </TableCell>
-                );
-              })}
+              {
+                tableHead.map((prop, key) => {
+                  return (
+                    <TableCell
+                      className={classes.tableCell + " " + classes.tableHeadCell}
+                      key={key}
+                    >
+                      {prop}
+                    </TableCell>
+                  );
+                })
+              }
 
             </TableRow>
           </TableHead>
@@ -107,6 +109,5 @@ CustomTable.propTypes = {
   withActionEdit: PropTypes.bool,
   withActionView: PropTypes.bool,
   withActionDelete: PropTypes.bool,
-  handleAddCategoryEvent: PropTypes.func,
   uniqueId: PropTypes.any
 };

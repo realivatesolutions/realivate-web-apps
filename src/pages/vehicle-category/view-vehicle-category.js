@@ -66,18 +66,6 @@ class ViewVehicleCategoryPage extends Component {
                                         <GridContainer>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
-                                                    id="categoryType"
-                                                    value={this.state.category && this.state.category.categoryType}
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                    inputProps={{
-                                                        disabled: true
-                                                    }}
-                                                />
-                                            </GridItem>
-                                            <GridItem xs={12} sm={12} md={7}>
-                                                <TextField
                                                     id="name"
                                                     value={this.state.category && this.state.category.name}
                                                     formControlProps={{
