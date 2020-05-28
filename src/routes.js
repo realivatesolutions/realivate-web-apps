@@ -9,6 +9,8 @@ import CreateClientPage from './pages/clients/create-client'
 import ViewClientPage from './pages/clients/view-client'
 import EditClientPage from './pages/clients/edit-client'
 
+import ClientsProductPage from './pages/products'
+
 class Routes extends Component{
     constructor(props) {
         super(props);
@@ -36,6 +38,7 @@ class Routes extends Component{
                 <Route exact path={'/clients/create'} component={CreateClientPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/clients/view'} component={ViewClientPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/clients/edit'} component={EditClientPage} {...this.props} onChange={this.onChangeRunActions}/>
+                <Route exact path={'/products'} component={ClientsProductPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Redirect from="/" to="/dashboard" />
             </Switch>
         )

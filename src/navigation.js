@@ -24,9 +24,11 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
 import Unarchive from "@material-ui/icons/Unarchive";
 import Language from "@material-ui/icons/Language";
+import FastfoodIcon from '@material-ui/icons/Fastfood';
 // core components/views for Admin layout
 import DashboardPage from "./pages/dashboard";
 import ClientsPage from "./pages/clients";
+import ClientsProductPage from "./pages/products";
 
 const dashboardRoutes = [
     {
@@ -41,6 +43,13 @@ const dashboardRoutes = [
         name: "Clients",
         icon: Person,
         component: ClientsPage,
+        layout: "/"
+    },
+    {
+        path: "products",
+        name: "Client Products",
+        icon: FastfoodIcon,
+        component: ClientsProductPage,
         layout: "/"
     }
 ];
