@@ -34,6 +34,21 @@ export default function CustomDataTable(props) {
         }
     };
 
+    const getRowData = (object , key )=>{
+    let arr = key.split('.');
+    if(arr.length===1) return object[key];
+    let ctr=1;
+    let param=object;
+    let retval={};
+    arr.forEach( data  =>{
+      param=param[data];
+      retval = Object.assign({},{value:param});
+    }
+    );
+     console.log("EXIT PARAM :" +retval);
+     return retval.value;
+  }
+
     function descendingComparator(a, b, orderBy) {
         if (b[orderBy] < a[orderBy]) {
             return -1;
@@ -159,7 +174,8 @@ export default function CustomDataTable(props) {
                                                     if(value.id === 'action') return;
                                                     return (
                                                         <TableCell className={classes.tableCell} key={key} >
-                                                            {row[value.id]}
+                                                            
+                                                            {getRowData(row,value.id)}
                                                         </TableCell>
                                                     );
                                                 })

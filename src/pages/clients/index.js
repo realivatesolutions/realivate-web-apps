@@ -7,7 +7,7 @@ import { withStyles} from "@material-ui/core/styles";
 import GridContainer from "../../components/Grid/GridContainer";
 import GridItem from "../../components/Grid/GridItem";
 import Card from "../../components/Card/Card";
-import Table from "../../components/Table/Table";
+import CustomDataTable from '../../components/CustomDataTable'
 import Button from "../../components/CustomButtons";
 import CardBody from "../../components/Card/CardBody";
 import CardHeader from "../../components/Card/CardHeader";
@@ -47,7 +47,12 @@ class ClientsPage extends Component {
     render() {
         const { classes, clientsReducer } = this.props;
         const clientsList = clientsReducer.data
-        
+        const tableHeadMapping = [
+            { id: 'name', numeric: false, disablePadding: true, label: 'Client Name' },
+            { id: 'data.client.businessName', numeric: false, disablePadding: false, label: 'Business Name' },
+            { id: 'data.client.contactPerson', numeric: false, disablePadding: false, label: 'Contact Person' },
+            { id: 'status', numeric: false, disablePadding: false, label: 'Status' }
+        ];
         return (
             <div>
                 <GridContainer>
@@ -70,17 +75,18 @@ class ClientsPage extends Component {
                                 </GridContainer>
                                 <br/>
                                 <Paper className={classes.contentRoot} elevation={1}>
-                                    <Table
+                                    
+                                    <CustomDataTable
+                                        uniqueId={'id'}
+                                        tableHeaderColor="gray"
+                                        hasCheckBox={false}
                                         withActionView={true}
                                         withActionEdit={true}
-                                        tableHeaderColor="gray"
-                                        tableHead={[ "Client Name", "Business Name", "Contact Person" , "Status"]}
-                                        tableDataMapping={[ "name", "data.client.businessName", "data.client.contactPerson","status"]}
                                         tableData={clientsList}
-                                        handleAddClientEvent={this.handleAddClientEvent}
+                                        tableDataMapping={tableHeadMapping}
+                                        handleAddCategoryEvent={this.handleAddClientEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
                                         handleEditCategoryEvent={this.handleEditCategoryEvent}
-                                        uniqueId={'name'}
                                     />
                                 </Paper>
                             </CardBody>
