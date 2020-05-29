@@ -62,7 +62,7 @@ function updateClient(data){
     };
 }
 
-export const actions = {
+export const clientsAction = {
     getAllClients: getAllClients,
     createClient: createClient,
     getClient: getClient,

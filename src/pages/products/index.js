@@ -11,25 +11,12 @@ import Table from "../../components/Table/Table";
 import Button from "../../components/CustomButtons";
 import CardBody from "../../components/Card/CardBody";
 import CardHeader from "../../components/Card/CardHeader";
-import {actions as clientsAction} from '../../action/clientsAction'
+import {clientsAction as clientsAction} from '../../action/clientsAction'
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import Paper from "@material-ui/core/Paper";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 
-
-const top100Films = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  { title: 'The Godfather', year: 1972 },
-  { title: 'The Godfather: Part II', year: 1974 },
-  { title: 'The Dark Knight', year: 2008 },
-  { title: '12 Angry Men', year: 1957 },
-  { title: "Schindler's List", year: 1993 },
-  { title: 'Pulp Fiction', year: 1994 },
-  { title: 'The Lord of the Rings: The Return of the King', year: 2003 },
-  { title: 'The Good, the Bad and the Ugly', year: 1966 },
-  ];
-  
 
 class ClientsProductsPage extends Component {
 
@@ -85,11 +72,11 @@ class ClientsProductsPage extends Component {
                                         freeSolo
                                         id="free-solo-2-demo"
                                         disableClearable
-                                        options={top100Films.map((option) => option.title)}
+                                        options={clientsList.map((option) => option.name)}
                                         renderInput={(params) => (
                                         <TextField
                                              {...params}
-                                            label="Search input"
+                                            label="Search Client"
                                              margin="normal"
                                             variant="outlined"
                                             InputProps={{ ...params.InputProps, type: 'search' }}
@@ -98,7 +85,7 @@ class ClientsProductsPage extends Component {
                                         />
                                     </GridItem>
                                     <GridItem item xs={3} container justify="flex-end">
-                                        <Button color="info" round onClick={this.handleAddClientEvent}> Add New Client</Button>
+                                        <Button color="info" round onClick={this.handleAddClientEvent}> Add New Product</Button>
                                     </GridItem>
                                 </GridContainer>
                                 <br/>

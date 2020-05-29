@@ -11,7 +11,7 @@ import CustomDataTable from '../../components/CustomDataTable'
 import Button from "../../components/CustomButtons";
 import CardBody from "../../components/Card/CardBody";
 import CardHeader from "../../components/Card/CardHeader";
-import {actions as clientsAction} from '../../action/clientsAction'
+import {clientsAction as clientsAction} from '../../action/clientsAction'
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import Paper from "@material-ui/core/Paper";
 
@@ -22,7 +22,7 @@ class ClientsPage extends Component {
         this.handleAddClientEvent = this.handleAddClientEvent.bind(this)
         this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
 
-        this.props.actions.getAllClients()
+        this.props.clientsAction.getAllClients()
     }
 
     handleAddClientEvent() {
@@ -106,7 +106,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({...clientsAction}, dispatch)
+        clientsAction: bindActionCreators({...clientsAction}, dispatch)
     }
 }
 

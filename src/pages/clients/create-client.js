@@ -13,7 +13,7 @@ import GridItem from "../../components/Grid/GridItem";
 import TextField from "../../components/CustomInput"
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
-import {actions as clientsAction} from '../../action/clientsAction'
+import {clientsAction as clientsAction} from '../../action/clientsAction'
 
 class CreateClientPage extends Component {
     constructor(props) {
@@ -40,7 +40,7 @@ class CreateClientPage extends Component {
     };
 
     handleSubmit() {
-        this.props.actions.createClient(this.state)
+        this.props.clientsAction.createClient(this.state)
         this.props.history.push('/clients')
     }
 
@@ -145,7 +145,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({...clientsAction}, dispatch)
+        clientsAction: bindActionCreators({...clientsAction}, dispatch)
     }
 }
 
