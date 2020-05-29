@@ -1,6 +1,6 @@
 {
-  "realm": "realivate-operation",
-  "auth-server-url": "http://localhost:8080/auth/",
+  "realm": "realivate",
+  "auth-server-url": "https://ec2-52-221-193-210.ap-southeast-1.compute.amazonaws.com:8443/auth/",
   "ssl-required": "external",
   "resource": "realivate-ops-management",
   "public-client": true,
