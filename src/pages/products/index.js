@@ -24,6 +24,9 @@ class ClientsProductsPage extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            selectedClientName:''
+        }
         this.handleAddClientEvent = this.handleAddClientEvent.bind(this)
         this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
 
@@ -31,7 +34,11 @@ class ClientsProductsPage extends Component {
     }
 
     handleAddClientEvent() {
-        this.props.history.push('/clients/create')
+        this.props.history.push({
+            pathname: '/products/create',
+            state: {  selectedClientName : this.state.selectedClientName  }
+        })
+       
     }
 
     handleViewCategoryEvent = value => {
@@ -47,6 +54,11 @@ class ClientsProductsPage extends Component {
             pathname: '/clients/edit',
             state: { id : value }
         })
+    }
+
+    handleClientChangeEvent = value => {
+        console.log(value);
+        this.state.selectedClientName=value;
     }
 
     render() {
@@ -73,6 +85,7 @@ class ClientsProductsPage extends Component {
                                         id="free-solo-2-demo"
                                         disableClearable
                                         options={clientsList.map((option) => option.name)}
+                                        onChange={(event, newValue) => {this.handleClientChangeEvent(newValue);}}
                                         renderInput={(params) => (
                                         <TextField
                                              {...params}

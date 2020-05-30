@@ -1,4 +1,4 @@
-import ProductDataService from '../services/productsDataService'
+import ProductDataService from '../services/productDataService'
 import * as types from '../action/actionTypes'
 
 
