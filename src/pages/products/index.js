@@ -12,6 +12,7 @@ import Button from "../../components/CustomButtons";
 import CardBody from "../../components/Card/CardBody";
 import CardHeader from "../../components/Card/CardHeader";
 import {clientsAction as clientsAction} from '../../action/clientsAction'
+import {productsAction as productsAction} from '../../action/productsAction'
 import styles from "../../assets/jss/material-dashboard-react/views/commonStyle";
 import Paper from "@material-ui/core/Paper";
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -30,7 +31,8 @@ class ClientsProductsPage extends Component {
         this.handleAddClientEvent = this.handleAddClientEvent.bind(this)
         this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
 
-        this.props.actions.getAllClients()
+        this.props.clientsAction.getAllClients()
+        this.props.productsAction.getAllProductsByClient('')
     }
 
     handleAddClientEvent() {
@@ -59,11 +61,13 @@ class ClientsProductsPage extends Component {
     handleClientChangeEvent = value => {
         console.log(value);
         this.state.selectedClientName=value;
+        this.props.productsAction.getAllProductsByClient(value)
     }
 
     render() {
-        const { classes, clientsReducer } = this.props;
+        const { classes, clientsReducer,productsReducer } = this.props;
         const clientsList = clientsReducer.data
+        const productsList = productsReducer.data
         
         return (
             <div>
@@ -107,9 +111,9 @@ class ClientsProductsPage extends Component {
                                         withActionView={true}
                                         withActionEdit={true}
                                         tableHeaderColor="gray"
-                                        tableHead={[ "Client Name", "Business Name", "Contact Person" , "Status"]}
-                                        tableDataMapping={[ "name", "data.client.businessName", "data.client.contactPerson","status"]}
-                                        tableData={clientsList}
+                                        tableHead={[ "Name", "Description", "Price" ]}
+                                        tableDataMapping={[ "name", "description", "data.product.price"]}
+                                        tableData={productsList}
                                         handleAddClientEvent={this.handleAddClientEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
                                         handleEditCategoryEvent={this.handleEditCategoryEvent}
@@ -127,13 +131,16 @@ class ClientsProductsPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        clientsReducer: state.clientsReducer
+        clientsReducer: state.clientsReducer,
+        productsReducer: state.productsReducer
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({...clientsAction}, dispatch)
+        clientsAction: bindActionCreators({...clientsAction}, dispatch),
+        productsAction: bindActionCreators({...productsAction}, dispatch)
+        
     }
 }
 

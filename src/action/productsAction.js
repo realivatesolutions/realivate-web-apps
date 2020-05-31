@@ -23,9 +23,9 @@ export function loadProductSuccess(data){
     }
 }
 
-function getAllProductsByClient(clientId){
+function getAllProductsByClient(clientName){
     return dispatch => {
-        ProductDataService.getAllProductsByClient().then( response => {
+        ProductDataService.getAllProductsByClient(clientName).then( response => {
             dispatch(loadAllProductsSuccess(response.data))
         }).catch( error => {
             dispatch(loadAllProductsFailed(error.message))

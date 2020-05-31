@@ -49,7 +49,7 @@ export default function CustomDataTableHead(props) {
                                 >
                                     {prop.label}
                                     {orderBy === prop.id ? (
-                                        <span className={classes.visuallyHidden}> {order === 'desc' ? 'sorted descending' : 'sorted ascending'} </span>
+                                        <span className={classes.visuallyHidden}> {order === 'desc' ? '' : ''} </span>
                                     ) : null}
                                 </TableSortLabel>
                             </TableCell>
