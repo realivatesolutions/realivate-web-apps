@@ -41,6 +41,7 @@ class CreateProductPage extends Component {
     };
 
     handleSubmit() {
+        console.log('CREATING PRODUCT')
         this.props.productsAction.createProduct(this.state)
         this.props.history.push('/products')
     }
@@ -81,7 +82,7 @@ class CreateProductPage extends Component {
                                                 <TextField
                                                     labelText="Description"
                                                     id="description"
-                                                    value={this.state.product.businessName}
+                                                    value={this.state.product.description}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -92,24 +93,14 @@ class CreateProductPage extends Component {
                                                 <TextField
                                                     labelText="Price"
                                                     id="price"
-                                                    value={this.state.product.address}
+                                                    value={this.state.product.price}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
                                                     }}
                                                 />
                                             </GridItem>
-                                            <GridItem xs={12} sm={12} md={7}>
-                                                <TextField
-                                                    labelText="Contact Person"
-                                                    id="contactPerson"
-                                                    value={this.state.product.contactPerson}
-                                                    onChange={this.handleChange}
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                />
-                                            </GridItem>
+                                           
 
 
                                         </GridContainer>

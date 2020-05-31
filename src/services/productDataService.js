@@ -19,10 +19,12 @@ export class ProductDataService {
     }
 
     static createProduct(object) {
+        console.log('CREATING PRODUCT SERVICE')
         return new Promise((resolve, reject) => {
-            let httpClientObj = httpClient.getInstance(config.realivateOpsBaseUrl);
-            let data = DataBuilder.buildCreateData(object);
-            httpClientObj.post('catalogs', data ).then((response) => {
+            let httpClientObj = httpClient.getInstance(config.productsBaseUrl);
+            let data = DataBuilder.buildCreateProductData(object);
+            
+            httpClientObj.post('products', data ).then((response) => {
                 resolve(response)
             }).catch((error) => {
                 reject(error.message)
@@ -32,9 +34,9 @@ export class ProductDataService {
 
     static updateProduct(object){
         return new Promise((resolve, reject) => {
-            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            let data = DataBuilder.buildCreateData(object);
-            httpClientObj.post('catalogs', object ).then((response) => {
+            let httpClientObj = httpClient.getInstance(config.productsBaseUrl);
+            let data = DataBuilder.buildCreateProductData(object);
+            httpClientObj.post('products', object ).then((response) => {
                 resolve(response)
             }).catch((error) => {
                 reject(error.message)
@@ -45,8 +47,8 @@ export class ProductDataService {
 
     static getProduct(id){
         return new Promise((resolve, reject) => {
-            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            httpClientObj.get('catalogs/' + config.clientRealm +"/"+id).then((response) => {
+            let httpClientObj = httpClient.getInstance(config.productsBaseUrl);
+            httpClientObj.get('products/' + config.clientRealm +"/"+id).then((response) => {
                 resolve(response)
             }).catch((err) => {
                 console.log(err.message)

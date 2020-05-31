@@ -20,7 +20,7 @@ export class ClientDataService {
 
     static createClient(object) {
         return new Promise((resolve, reject) => {
-            let httpClientObj = httpClient.getInstance(config.realivateOpsBaseUrl);
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
             let data = DataBuilder.buildCreateData(object);
             httpClientObj.post('catalogs', data ).then((response) => {
                 resolve(response)

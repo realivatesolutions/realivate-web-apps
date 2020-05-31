@@ -2,7 +2,6 @@ module.exports = {
     baseUrl: 'http://localhost:8001/api/v1/',
     catalogBaseUrl: 'https://ymmndykoba.execute-api.ap-southeast-1.amazonaws.com/dev/',
     inventoryBaseUrl: 'http://localhost:8001/api/v1/',
-    realivateOpsBaseUrl: 'https://ymmndykoba.execute-api.ap-southeast-1.amazonaws.com/dev/',
     productsBaseUrl: 'https://le9kpk3rlg.execute-api.ap-southeast-1.amazonaws.com/dev/',
     clientRealm:'REALIVATE',
     clientsPath:'CLIENT',

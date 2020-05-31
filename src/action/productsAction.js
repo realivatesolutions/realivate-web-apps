@@ -34,6 +34,7 @@ function getAllProductsByClient(clientName){
 }
 
 function createProduct(data) {
+     console.log('CREATING PRODUCT ACTION')
     return dispatch => {
         ProductDataService.createProduct(data).then( response => {
 
