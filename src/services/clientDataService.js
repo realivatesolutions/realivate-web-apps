@@ -21,7 +21,7 @@ export class ClientDataService {
     static createClient(object) {
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            let data = DataBuilder.buildCreateData(object);
+            let data = DataBuilder.buildCreateClientData(object);
             httpClientObj.post('catalogs', data ).then((response) => {
                 resolve(response)
             }).catch((error) => {
@@ -33,7 +33,7 @@ export class ClientDataService {
     static updateClient(object){
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            let data = DataBuilder.buildCreateData(object);
+            let data = DataBuilder.buildCreateClientData(object);
             httpClientObj.post('catalogs', object ).then((response) => {
                 resolve(response)
             }).catch((error) => {

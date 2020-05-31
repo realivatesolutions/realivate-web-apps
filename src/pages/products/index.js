@@ -28,14 +28,14 @@ class ClientsProductsPage extends Component {
         this.state = {
             selectedClientName:''
         }
-        this.handleAddClientEvent = this.handleAddClientEvent.bind(this)
+        this.handleAddProductEvent = this.handleAddProductEvent.bind(this)
         this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
 
         this.props.clientsAction.getAllClients()
         this.props.productsAction.getAllProductsByClient('')
     }
 
-    handleAddClientEvent() {
+    handleAddProductEvent() {
         this.props.history.push({
             pathname: '/products/create',
             state: {  selectedClientName : this.state.selectedClientName  }
@@ -53,7 +53,7 @@ class ClientsProductsPage extends Component {
 
     handleEditCategoryEvent = value => {
         this.props.history.push({
-            pathname: '/clients/edit',
+            pathname: '/products/edit',
             state: { id : value }
         })
     }
@@ -114,7 +114,7 @@ class ClientsProductsPage extends Component {
                                         tableHead={[ "Name", "Description", "Price" ]}
                                         tableDataMapping={[ "name", "description", "data.product.price"]}
                                         tableData={productsList}
-                                        handleAddClientEvent={this.handleAddClientEvent}
+                                        handleAddClientEvent={this.handleAddProductEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
                                         handleEditCategoryEvent={this.handleEditCategoryEvent}
                                         uniqueId={'id'}

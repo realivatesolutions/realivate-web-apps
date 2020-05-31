@@ -55,6 +55,7 @@ function getProduct(id) {
 }
 
 function updateProduct(data){
+    console.log('UPDATE PRODUCT ACTION')
     return dispatch => {
         ProductDataService.updateProduct(data).then( response => {
         }).catch( error => {

@@ -12,6 +12,7 @@ import EditClientPage from './pages/clients/edit-client'
 import ClientsProductPage from './pages/products'
 import CreateProductPage from './pages/products/create-product'
 import ViewProductPage from './pages/products/view-product'
+import EditProductPage from './pages/products/edit-product'
 
 class Routes extends Component{
     constructor(props) {
@@ -43,6 +44,7 @@ class Routes extends Component{
                 <Route exact path={'/products'} component={ClientsProductPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/products/create'} component={CreateProductPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/products/view'} component={ViewProductPage} {...this.props} onChange={this.onChangeRunActions}/>
+                <Route exact path={'/products/edit'} component={EditProductPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Redirect from="/" to="/dashboard" />
             </Switch>
         )
