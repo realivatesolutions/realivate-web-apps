@@ -33,7 +33,7 @@ export class ClientDataService {
     static updateClient(object){
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            let data = DataBuilder.buildCreateClientData(object);
+            let data = DataBuilder.buildUpdateClientData(object);
             httpClientObj.post('catalogs', object ).then((response) => {
                 resolve(response)
             }).catch((error) => {
