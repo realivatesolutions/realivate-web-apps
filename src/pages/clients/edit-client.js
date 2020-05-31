@@ -83,7 +83,7 @@ class EditClientPage extends Component {
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
                                                     id="clientName"
-                                                    value={this.state.client && this.state.client.name}
+                                                    value={this.state.client && this.state.client.clientName}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -97,7 +97,7 @@ class EditClientPage extends Component {
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
                                                     id="businessName"
-                                                    value={this.state.client && this.state.client.data.client.businessName}
+                                                    value={this.state.client && this.state.client.businessName}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -111,7 +111,7 @@ class EditClientPage extends Component {
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
                                                     id="contactPerson"
-                                                    value={this.state.client && this.state.client.data.client.contactPerson}
+                                                    value={this.state.client && this.state.client.contactPerson}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -125,7 +125,7 @@ class EditClientPage extends Component {
                                              <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
                                                     id="address"
-                                                    value={this.state.client && this.state.client.data.client.address}
+                                                    value={this.state.client && this.state.client.address}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true

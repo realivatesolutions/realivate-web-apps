@@ -16,17 +16,21 @@ export class DataBuilder {
 	}
 
 	static buildUpdateClientData  (object) {
-	console.log('form data :' +object);
 	let id = {id:object.id};
 	let version = {version:object.version};
 	let clientRealm = {clientRealm:config.clientRealm.toUpperCase()};	
 	let categoryType = {categoryType:object.categoryType.toUpperCase()};	
 	let name = {name:object.clientName.toUpperCase()};
 	let description = {description:object.clientName.toUpperCase()};
-	let data = {data:Object.assign({},object)};
+    let clientName = {clientName:object.clientName.toUpperCase()};
+    let businessName = {businessName:object.businessName.toUpperCase()};
+    let address = {address:object.address.toUpperCase()};
+    let contactPerson = {contactPerson:object.contactPerson.toUpperCase()};
+    let client = {client:Object.assign({},clientName, businessName,address,contactPerson)};
+    let data = {data:Object.assign({},client)};
 	let sdata = Object.assign({},id,version, name, description ,data ,clientRealm,categoryType)	
 
-	console.log('builder data :' +sdata);
+	console.log('builder data :' +JSON.stringify(sdata));
 	return sdata;
 	}
 

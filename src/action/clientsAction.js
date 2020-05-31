@@ -16,10 +16,14 @@ export function loadAllClientsFailed(data){
 }
 
 
-export function loadClientSuccess(data){
+export function loadClientSuccess(result){
+    const { data  } = result;
+    const { client } = data;
+    let resolvedData = Object.assign({}, result,client) 
+    console.log(' RESOLVED DATA ' + JSON.stringify(resolvedData))
     return{
         type: types.LOAD_CLIENT_SUCCESS,
-        data: data
+        data: resolvedData
     }
 }
 
