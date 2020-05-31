@@ -88,6 +88,9 @@ class EditClientPage extends Component {
                                                     formControlProps={{
                                                         fullWidth: true
                                                     }}
+                                                     inputProps={{
+                                                        disabled: false
+                                                    }}
                                                     
                                                 />
                                             </GridItem>
@@ -98,6 +101,9 @@ class EditClientPage extends Component {
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: false
                                                     }}
                                                     
                                                 />
@@ -110,7 +116,10 @@ class EditClientPage extends Component {
                                                     formControlProps={{
                                                         fullWidth: true
                                                     }}
-                                                   
+                                                   inputProps={{
+                                                        disabled: false
+                                                    }}
+                                                    
                                                 />
                                             </GridItem>
                                              <GridItem xs={12} sm={12} md={7}>
@@ -121,7 +130,10 @@ class EditClientPage extends Component {
                                                     formControlProps={{
                                                         fullWidth: true
                                                     }}
-                                                  
+                                                  inputProps={{
+                                                        disabled: false
+                                                    }}
+                                                    
                                                 />
                                             </GridItem>
 

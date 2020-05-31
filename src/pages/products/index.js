@@ -45,7 +45,7 @@ class ClientsProductsPage extends Component {
 
     handleViewCategoryEvent = value => {
         this.props.history.push({
-            pathname: '/clients/view',
+            pathname: '/products/view',
             state: { id : value }
         })
 
@@ -117,7 +117,7 @@ class ClientsProductsPage extends Component {
                                         handleAddClientEvent={this.handleAddClientEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
                                         handleEditCategoryEvent={this.handleEditCategoryEvent}
-                                        uniqueId={'name'}
+                                        uniqueId={'id'}
                                     />
                                 </Paper>
                             </CardBody>

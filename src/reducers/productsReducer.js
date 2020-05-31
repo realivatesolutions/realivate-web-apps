@@ -15,7 +15,7 @@ export default function productsReducer(state = initialState, action) {
         case types.LOAD_PRODUCT_SUCCESS:
             return {
                 ...state,
-                selectedClient: action.data
+                selectedProduct: action.data
             }
         case types.LOAD_ALL_PRODUCTS_FAILED:
             return{

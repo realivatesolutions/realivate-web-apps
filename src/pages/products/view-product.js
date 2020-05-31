@@ -15,39 +15,38 @@ import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
 import {productsAction as productsAction} from '../../action/productsAction'
 
-class CreateProductPage extends Component {
+class ViewProductPage extends Component {
+
+	
     constructor(props) {
         super(props);
         this.state = {
-            product:{
-                categoryType: 'PRODUCTS',
-                clientName: props.location && props.location.state && props.location.state.selectedClientName || undefined
-                
-
-            }
+            product:undefined,
+            id: props.location && props.location.state && props.location.state.id || undefined    
         }
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleCancelEventButton = this.handleCancelEventButton.bind(this)
+    	this.handleCancelEventButton = this.handleCancelEventButton.bind(this)
     }
-
-    handleChange(e) {
-        this.setState({
-            product: {
-                ...this.state.product,
-                [e.target.id]: e.target.value
-            }
-        })
-    };
-
-    handleSubmit() {
-        console.log('CREATING PRODUCT PAGE')
-        this.props.productsAction.createProduct(this.state)
-        this.props.history.push('/products')
-    }
-
+   
     handleCancelEventButton(){
         this.props.history.push('/products')
+    }
+
+     componentDidMount() {
+        if(this.state && this.state.id){
+            this.props.productsAction.getProduct(this.state.id);
+        }else{
+            this.props.history.push('/products')
+        }
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+       const { productsReducer } = nextProps
+        if(!this.state.product && productsReducer.selectedProduct){
+            this.setState({
+                ...this.state,
+                product: productsReducer.selectedProduct
+            })
+        }
     }
 
     render() {
@@ -60,7 +59,7 @@ class CreateProductPage extends Component {
                         <Card plain>
                             <CardHeader plain color="info">
                                 <h4 className={classes.cardTitleWhite}>
-                                    Add New Product
+                                    View Product Details
                                 </h4>
                             </CardHeader>
                             <CardBody>
@@ -69,34 +68,37 @@ class CreateProductPage extends Component {
                                         <GridContainer>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
-                                                    labelText="Name"
                                                     id="name"
-                                                    value={this.state.product.name}
-                                                    onChange={this.handleChange}
+                                                    value={this.state.product && this.state.product.name}
                                                     formControlProps={{
                                                         fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
                                                     }}
                                                 />
                                             </GridItem>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
-                                                    labelText="Description"
-                                                    id="description"
-                                                    value={this.state.product.description}
-                                                    onChange={this.handleChange}
+                                                	id="description"
+                                                    value={this.state.product && this.state.product.description}
                                                     formControlProps={{
                                                         fullWidth: true
                                                     }}
-                                                />
+                                                    inputProps={{
+                                                        disabled: true
+                                                    }}
+                                                 />
                                             </GridItem>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
-                                                    labelText="Price"
                                                     id="price"
-                                                    value={this.state.product.price}
-                                                    onChange={this.handleChange}
+                                                    value={this.state.product && this.state.product.data.product.price}
                                                     formControlProps={{
                                                         fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
                                                     }}
                                                 />
                                             </GridItem>
@@ -108,9 +110,6 @@ class CreateProductPage extends Component {
                                         <GridContainer>
                                             <GridItem xs={12} sm={12} md={5}>
                                                 <GridContainer>
-                                                    <GridItem xs={12} sm={12} md={3}>
-                                                        <Button color="info"  size={'lg'} onClick={() => this.handleSubmit()}>Save</Button>
-                                                    </GridItem>
                                                     <GridItem xs={12} sm={12} md={3}>
                                                         <Button color="info" size={'lg'} onClick={this.handleCancelEventButton}>Cancel</Button>
                                                     </GridItem>
@@ -143,5 +142,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateProductPage))
+    connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ViewProductPage))
 )
