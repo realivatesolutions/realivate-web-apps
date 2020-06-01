@@ -12,7 +12,8 @@ import GridItem from "../../components/Grid/GridItem";
 import TextField from "../../components/CustomInput"
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
-import {actions as serviceCrewActions} from '../../action/serviceCrewAction'
+import {actions as serviceCrewActions} from '../../action/serviceCrewAction';
+import MatTextField from '@material-ui/core/TextField';
 
 class CreateServiceCrewPage extends Component {
     constructor(props) {
@@ -140,6 +141,18 @@ class CreateServiceCrewPage extends Component {
                                                     labelText="Address"
                                                     id="address"
                                                     value={this.state.crew.data.address}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                                <MatTextField
+                                                    id="dateOfBirth"
+                                                    label="Date Of Birth"
+                                                    type="date"
+                                                    value={this.state.crew.data.dateOfBirth}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true

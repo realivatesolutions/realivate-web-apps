@@ -13,6 +13,7 @@ import TextField from "../../components/CustomInput"
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
 import {actions as serviceCrewActions} from '../../action/serviceCrewAction'
+import MatTextField from '@material-ui/core/TextField';
 
 class ViewServiceCrewPage extends Component {
     constructor(props) {
@@ -152,6 +153,18 @@ class ViewServiceCrewPage extends Component {
                                                     inputProps={{
                                                         disabled: true
                                                     }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                                <MatTextField
+                                                    id="dateOfBirth"
+                                                    type="date"
+                                                    value={this.state.crew && this.state.crew.data && this.state.crew.data.dateOfBirth}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    disabled = "true"
                                                 />
                                             </GridItem>
                                         </GridContainer>
