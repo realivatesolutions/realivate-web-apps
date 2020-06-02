@@ -13,6 +13,7 @@ import TextField from "../../components/CustomInput"
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
 import {actions as vehicleCategoryActions} from '../../action/vehicleCategoryAction'
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 class CreateVehicleCategoryPage extends Component {
     constructor(props) {
@@ -60,10 +61,16 @@ class CreateVehicleCategoryPage extends Component {
                             </CardHeader>
                             <CardBody>
                                 <Paper className={classes.contentRoot} elevation={1}>
-                                    <form className={classes.container}>
+                                    <form
+                                        ref="form"
+                                        className={classes.container}
+                                        onSubmit={this.handleSubmit}
+                                        onError={errors => console.log(errors)}
+                                    >
                                         <GridContainer>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
+                                                    required
                                                     labelText="Name"
                                                     id="name"
                                                     value={this.state.category.name}
@@ -75,6 +82,7 @@ class CreateVehicleCategoryPage extends Component {
                                             </GridItem>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
+                                                    required
                                                     labelText="Description"
                                                     id="description"
                                                     value={this.state.category.description}
@@ -91,14 +99,13 @@ class CreateVehicleCategoryPage extends Component {
                                             <GridItem xs={12} sm={12} md={5}>
                                                 <GridContainer>
                                                     <GridItem xs={12} sm={12} md={3}>
-                                                        <Button color="info"  size={'lg'} onClick={() => this.handleSubmit()}>Save</Button>
+                                                        <Button type={'submit'} color="info"  size={'lg'}>Save</Button>
                                                     </GridItem>
                                                     <GridItem xs={12} sm={12} md={3}>
                                                         <Button color="info" size={'lg'} onClick={this.handleCancelEventButton}>Cancel</Button>
                                                     </GridItem>
                                                 </GridContainer>
                                             </GridItem>
-
                                         </GridContainer>
                                     </form>
                                 </Paper>

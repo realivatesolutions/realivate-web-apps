@@ -46,6 +46,7 @@ export default function Index(props) {
   const marginTop = classNames({
     [classes.marginTop]: labelText === undefined
   });
+  console.log('required', required)
   return (
     <FormControl
       {...formControlProps}
@@ -90,5 +91,6 @@ Index.propTypes = {
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
   error: PropTypes.bool,
-  success: PropTypes.bool
+  success: PropTypes.bool,
+  required: PropTypes.any
 };

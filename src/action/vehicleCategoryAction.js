@@ -33,6 +33,16 @@ function getAllVehicle(){
     };
 }
 
+function getAllPaginatedVehicle() {
+    return dispatch => {
+        VehicleCategoryService.getAllVehicleCategory().then( response => {
+            dispatch(loadAllVehicleCategoriesSuccess(response.data))
+        }).catch( error => {
+            dispatch(loadVehicleCategoriesFailed(error.message))
+        })
+    };
+}
+
 function createVehicle(data) {
     return dispatch => {
         VehicleCategoryService.createVehicle(data).then( response => {
@@ -64,6 +74,7 @@ function updateVehicle(data){
 
 export const actions = {
     getAllVehicle: getAllVehicle,
+    getAllPaginatedVehicle: getAllPaginatedVehicle,
     createVehicle: createVehicle,
     getVehicle: getVehicle,
     updateVehicle: updateVehicle

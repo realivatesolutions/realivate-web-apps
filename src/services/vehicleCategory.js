@@ -6,7 +6,19 @@ export class VehicleCategoryService {
     static getAllVehicleCategory() {
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
-            httpClientObj.get('catalogs/REALIVATE').then((response) => {
+            httpClientObj.get('catalogs/' + config.clientRealm + '/categoryType/VEHICLE').then((response) => {
+                resolve(response)
+            }).catch((err) => {
+                console.log(err.message)
+                reject(err)
+            })
+        })
+    }
+
+    static getAllPaginatedVehicle(){
+        return new Promise((resolve, reject) => {
+            let httpClientObj = httpClient.getInstance(config.catalogBaseUrl);
+            httpClientObj.get('catalogs/' + config.clientRealm + '/categoryType/VEHICLE').then((response) => {
                 resolve(response)
             }).catch((err) => {
                 console.log(err.message)

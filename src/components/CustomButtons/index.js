@@ -15,6 +15,7 @@ const useStyles = makeStyles(styles);
 export default function RegularButton(props) {
   const classes = useStyles();
   const {
+    type,
     color,
     round,
     children,
@@ -41,7 +42,7 @@ export default function RegularButton(props) {
     [className]: className
   });
   return (
-    <Button {...rest} classes={muiClasses} className={btnClasses}>
+    <Button {...rest} classes={muiClasses} className={btnClasses} type={type}>
       {children}
     </Button>
   );
@@ -69,5 +70,6 @@ RegularButton.propTypes = {
   className: PropTypes.string,
   // use this to pass the classes props from Material-UI
   muiClasses: PropTypes.object,
-  children: PropTypes.node
+  children: PropTypes.node,
+  type: PropTypes.string
 };
