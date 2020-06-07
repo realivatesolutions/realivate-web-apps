@@ -7,7 +7,7 @@ import { withStyles} from "@material-ui/core/styles";
 import GridContainer from "../../components/Grid/GridContainer";
 import GridItem from "../../components/Grid/GridItem";
 import Card from "../../components/Card/Card";
-import Table from "../../components/Table/Table";
+import CustomDataTable from '../../components/CustomDataTable'
 import Button from "../../components/CustomButtons";
 import CardBody from "../../components/Card/CardBody";
 import CardHeader from "../../components/Card/CardHeader";
@@ -32,7 +32,7 @@ class ClientsProductsPage extends Component {
         this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
 
         this.props.clientsAction.getAllClients()
-        this.props.productsAction.getAllProductsByClient('')
+       
     }
 
     handleAddProductEvent() {
@@ -68,7 +68,12 @@ class ClientsProductsPage extends Component {
         const { classes, clientsReducer,productsReducer } = this.props;
         const clientsList = clientsReducer.data
         const productsList = productsReducer.data
-        
+        const tableHeadMapping = [
+            { id: 'name', numeric: false, disablePadding: true, label: 'Product Name' },
+            { id: 'description', numeric: false, disablePadding: false, label: 'Description' },
+            { id: 'data.product.price', numeric: false, disablePadding: false, label: 'Price' },
+            { id: 'status', numeric: false, disablePadding: false, label: 'Status' }
+        ];
         return (
             <div>
                 <GridContainer>
@@ -102,23 +107,24 @@ class ClientsProductsPage extends Component {
                                         />
                                     </GridItem>
                                     <GridItem item xs={3} container justify="flex-end">
-                                        <Button color="info" round onClick={this.handleAddClientEvent}> Add New Product</Button>
+                                        <Button color="info" round onClick={this.handleAddProductEvent}> Add New Product</Button>
                                     </GridItem>
                                 </GridContainer>
                                 <br/>
                                 <Paper className={classes.contentRoot} elevation={1}>
-                                    <Table
+                                    <CustomDataTable
+                                        uniqueId={'id'}
+                                        tableHeaderColor="gray"
+                                        hasCheckBox={false}
                                         withActionView={true}
                                         withActionEdit={true}
-                                        tableHeaderColor="gray"
-                                        tableHead={[ "Name", "Description", "Price" ]}
-                                        tableDataMapping={[ "name", "description", "data.product.price"]}
                                         tableData={productsList}
-                                        handleAddClientEvent={this.handleAddProductEvent}
+                                        tableDataMapping={tableHeadMapping}
+                                        handleAddProductEvent={this.handleAddProductEvent}
                                         handleViewCategoryEvent={this.handleViewCategoryEvent}
                                         handleEditCategoryEvent={this.handleEditCategoryEvent}
-                                        uniqueId={'id'}
                                     />
+                                    
                                 </Paper>
                             </CardBody>
                         </Card>

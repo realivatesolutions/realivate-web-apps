@@ -14,6 +14,7 @@ import TextField from "../../components/CustomInput"
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
 import {productsAction as productsAction} from '../../action/productsAction'
+import MatTextField from '@material-ui/core/TextField';
 
 class ViewProductPage extends Component {
 
@@ -102,7 +103,32 @@ class ViewProductPage extends Component {
                                                     }}
                                                 />
                                             </GridItem>
-                                           
+                                           <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="startDate"
+                                                    type="date"
+                                                    value={this.state.product && this.state.product.startDate}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="endDate"
+                                                    type="date"
+                                                    value={this.state.product && this.state.product.endDate}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
+                                                    }}
+                                                />
+                                            </GridItem>
 
 
                                         </GridContainer>

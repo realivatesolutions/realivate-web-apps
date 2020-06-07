@@ -14,6 +14,7 @@ import TextField from "../../components/CustomInput"
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
 import {productsAction as productsAction} from '../../action/productsAction'
+import MatTextField from '@material-ui/core/TextField';
 
 class EditProductPage extends Component {
 
@@ -125,7 +126,36 @@ class EditProductPage extends Component {
                                                 />
                                             </GridItem>
                                            
-
+                                            <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="startDate"
+                                                    label="Effective Start Date"
+                                                    type="date"
+                                                    value={this.state.product && this.state.product.startDate}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: false
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="endDate"
+                                                    label="Effective End Date"
+                                                    type="date"
+                                                    value={this.state.product && this.state.product.endDate}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: false
+                                                    }}
+                                                />
+                                            </GridItem>
 
                                         </GridContainer>
                                         <br />
