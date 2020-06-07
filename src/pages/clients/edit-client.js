@@ -13,6 +13,7 @@ import TextField from "../../components/CustomInput"
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
 import {clientsAction as clientsAction} from '../../action/clientsAction'
+import MatTextField from '@material-ui/core/TextField';
 
 class EditClientPage extends Component {
 
@@ -134,6 +135,36 @@ class EditClientPage extends Component {
                                                         disabled: false
                                                     }}
                                                     
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="startDate"
+                                                    label="Effective Start Date"
+                                                    type="date"
+                                                    value={this.state.client && this.state.client.startDate}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: false
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="endDate"
+                                                    label="Effective End Date"
+                                                    type="date"
+                                                    value={this.state.client && this.state.client.endDate}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: false
+                                                    }}
                                                 />
                                             </GridItem>
 

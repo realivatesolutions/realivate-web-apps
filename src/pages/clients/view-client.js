@@ -13,6 +13,7 @@ import TextField from "../../components/CustomInput"
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
 import {clientsAction as clientsAction} from '../../action/clientsAction'
+import MatTextField from '@material-ui/core/TextField';
 
 class ViewClientPage extends Component {
 
@@ -65,6 +66,18 @@ class ViewClientPage extends Component {
                                 <Paper className={classes.contentRoot} elevation={1}>
                                     <form className={classes.container}>
                                         <GridContainer>
+                                        <GridItem xs={12} sm={12} md={7}>
+                                                <TextField
+                                                    id="status"
+                                                    value={this.state.client && this.state.client.status}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
+                                                    }}
+                                                />
+                                            </GridItem>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
                                                     id="name"
@@ -105,6 +118,32 @@ class ViewClientPage extends Component {
                                                 <TextField
                                                     id="address"
                                                     value={this.state.client && this.state.client.data.client.address}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                             <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="startDate"
+                                                    type="date"
+                                                    value={this.state.client && this.state.client.startDate}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="endDate"
+                                                    type="date"
+                                                    value={this.state.client && this.state.client.endDate}
                                                     formControlProps={{
                                                         fullWidth: true
                                                     }}
