@@ -37,7 +37,7 @@ export class ProductDataService {
         return new Promise((resolve, reject) => {
             let httpClientObj = httpClient.getInstance(config.productsBaseUrl);
             let data = DataBuilder.buildUpdateProductData(object);
-            httpClientObj.post('products', object ).then((response) => {
+            httpClientObj.post('products', data ).then((response) => {
                 resolve(response)
             }).catch((error) => {
                 reject(error.message)

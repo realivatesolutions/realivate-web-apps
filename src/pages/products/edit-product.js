@@ -115,7 +115,7 @@ class EditProductPage extends Component {
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
                                                     id="price"
-                                                    value={this.state.product && this.state.product.data.product.price}
+                                                    value={this.state.product && this.state.product.price}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -129,7 +129,6 @@ class EditProductPage extends Component {
                                             <GridItem xs={12} sm={12} md={7}>
                                                <MatTextField
                                                     id="startDate"
-                                                    label="Effective Start Date"
                                                     type="date"
                                                     value={this.state.product && this.state.product.startDate}
                                                     onChange={this.handleChange}
@@ -144,7 +143,6 @@ class EditProductPage extends Component {
                                             <GridItem xs={12} sm={12} md={7}>
                                                <MatTextField
                                                     id="endDate"
-                                                    label="Effective End Date"
                                                     type="date"
                                                     value={this.state.product && this.state.product.endDate}
                                                     onChange={this.handleChange}

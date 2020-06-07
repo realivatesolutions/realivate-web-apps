@@ -67,6 +67,18 @@ class ViewProductPage extends Component {
                                 <Paper className={classes.contentRoot} elevation={1}>
                                     <form className={classes.container}>
                                         <GridContainer>
+                                         <GridItem xs={12} sm={12} md={7}>
+                                                <TextField
+                                                    id="status"
+                                                    value={this.state.product && this.state.product.status}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                    inputProps={{
+                                                        disabled: true
+                                                    }}
+                                                />
+                                            </GridItem>
                                             <GridItem xs={12} sm={12} md={7}>
                                                 <TextField
                                                     id="name"

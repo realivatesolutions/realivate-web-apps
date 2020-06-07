@@ -64,8 +64,12 @@ export class DataBuilder {
 	let clientName = {clientName:object.clientName.toUpperCase()};
 	let name = {name:object.name.toUpperCase()};
 	let description = {description:object.description.toUpperCase()};
-	let data = {data:Object.assign({},object)};
-	let sdata = Object.assign({}, id,version,name, description ,data ,clientRealm,categoryType,clientName)	
+	let startDate = {startDate:object.startDate};
+	let price = {price:object.price};
+	let endDate = {endDate:object.endDate};
+	let product = {product:Object.assign({},name, description,price,endDate,startDate)};
+	let data = {data:Object.assign({},product)};
+	let sdata = Object.assign({}, id,version,name, description ,data ,clientRealm,categoryType,clientName,startDate,endDate)	
 
 	console.log('builder data :' +JSON.stringify(sdata));
 	return sdata;

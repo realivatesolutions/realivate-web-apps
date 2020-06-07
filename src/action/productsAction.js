@@ -16,10 +16,14 @@ export function loadAllProductsFailed(data){
 }
 
 
-export function loadProductSuccess(data){
+export function loadProductSuccess(result){
+    const { data  } = result;
+    const { product } = data;
+    let resolvedData = Object.assign({}, result,product) 
+    console.log(' RESOLVED DATA ' + JSON.stringify(resolvedData))
     return{
         type: types.LOAD_PRODUCT_SUCCESS,
-        data: data
+        data: resolvedData
     }
 }
 
