@@ -15,6 +15,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
 import {productsAction as productsAction} from '../../action/productsAction'
 import MatTextField from '@material-ui/core/TextField';
+import ImageUploader from 'react-images-upload';
 
 class EditProductPage extends Component {
 
@@ -23,12 +24,14 @@ class EditProductPage extends Component {
         super(props);
         this.state = {
             product:undefined,
-            id: props.location && props.location.state && props.location.state.id || undefined    
+            id: props.location && props.location.state && props.location.state.id || undefined ,
+            pictures: []  
         }
 
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     	this.handleCancelEventButton = this.handleCancelEventButton.bind(this)
+        this.onDrop = this.onDrop.bind(this);
     }
 
      handleChange(e) {
@@ -69,10 +72,17 @@ class EditProductPage extends Component {
         }
     }
 
+    onDrop(pictureFiles, pictureDataURLs) {
+        this.setState({
+            pictures: pictureFiles
+        });
+    }
+
     render() {
         const {classes} = this.props
         console.log(this.state);
         return (
+            <div>
             <div>
                 <GridContainer>
                     <GridItem xs={12} sm={12} md={12}>
@@ -154,7 +164,7 @@ class EditProductPage extends Component {
                                                     }}
                                                 />
                                             </GridItem>
-
+ 
                                         </GridContainer>
                                         <br />
                                         <GridContainer>
@@ -176,6 +186,19 @@ class EditProductPage extends Component {
                         </Card>
                     </GridItem>
                 </GridContainer>
+            </div>
+            <div>
+                <ImageUploader
+                withIcon={true}
+                buttonText='Choose images'
+                onChange={this.onDrop}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+                defaultImage={true}
+                singleImage={true}
+                withPreview={true}
+                />
+            </div>
             </div>
         )
     }
