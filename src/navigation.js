@@ -23,7 +23,7 @@ import BubbleChart from "@material-ui/icons/BubbleChart";
 import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
 import Unarchive from "@material-ui/icons/Unarchive";
-import Language from "@material-ui/icons/Language";
+import People from "@material-ui/icons/People";
 // core components/views for Admin layout
 import DashboardPage from "./pages/dashboard";
 
@@ -33,6 +33,13 @@ const dashboardRoutes = [
         path: "dashboard",
         name: "Dashboard",
         icon: Dashboard,
+        component: DashboardPage,
+        layout: "/"
+    },
+    {
+        path: "departments",
+        name: "Departments",
+        icon: People,
         component: DashboardPage,
         layout: "/"
     },

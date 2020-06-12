@@ -10,18 +10,18 @@ import CardHeader from "../../components/Card/CardHeader";
 import CardBody from "../../components/Card/CardBody";
 import GridItem from "../../components/Grid/GridItem";
 import TextField from "../../components/CustomInput"
+import MatTextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Button from "../../components/CustomButtons";
-import {actions as vehicleCategoryActions} from '../../action/vehicleCategoryAction'
+import {actions as departmentsAction} from '../../action/departmentsAction'
 
 
-class CreateVehicleCategoryPage extends Component {
+class CreateDepartmentPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            category:{
-                categoryType: 'VEHICLE',
-                clientRealm: 'REALIVATE'
+            department:{
+                categoryType: 'DEPARTMENTS'
             }
         }
         this.handleChange = this.handleChange.bind(this)
@@ -31,20 +31,20 @@ class CreateVehicleCategoryPage extends Component {
 
     handleChange(e) {
         this.setState({
-            category: {
-                ...this.state.category,
+            department: {
+                ...this.state.department,
                 [e.target.id]: e.target.value
             }
         })
     };
 
     handleSubmit() {
-        this.props.actions.createVehicle(this.state.category)
-        this.props.history.push('/vehicle')
+        this.props.actions.createDepartment(this.state.department)
+        this.props.history.push('/departments')
     }
 
     handleCancelEventButton(){
-        this.props.history.push('/vehicle')
+        this.props.history.push('/departments')
     }
 
     render() {
@@ -56,7 +56,7 @@ class CreateVehicleCategoryPage extends Component {
                         <Card plain>
                             <CardHeader plain color="info">
                                 <h4 className={classes.cardTitleWhite}>
-                                    Create Vehicle Category
+                                    Create Department
                                 </h4>
                             </CardHeader>
                             <CardBody>
@@ -73,7 +73,7 @@ class CreateVehicleCategoryPage extends Component {
                                                     required
                                                     labelText="Name"
                                                     id="name"
-                                                    value={this.state.category.name}
+                                                    value={this.state.department.name}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -85,7 +85,31 @@ class CreateVehicleCategoryPage extends Component {
                                                     required
                                                     labelText="Description"
                                                     id="description"
-                                                    value={this.state.category.description}
+                                                    value={this.state.department.description}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="startDate"
+                                                    label="Effective Start Date"
+                                                    type="date"
+                                                    value={this.state.department.startDate}
+                                                    onChange={this.handleChange}
+                                                    formControlProps={{
+                                                        fullWidth: true
+                                                    }}
+                                                />
+                                            </GridItem>
+                                            <GridItem xs={12} sm={12} md={7}>
+                                               <MatTextField
+                                                    id="endDate"
+                                                    label="Effective End Date"
+                                                    type="date"
+                                                    value={this.state.department.endDate}
                                                     onChange={this.handleChange}
                                                     formControlProps={{
                                                         fullWidth: true
@@ -121,16 +145,16 @@ class CreateVehicleCategoryPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        vehicleCategoryReducer: state.vehicleCategoryReducer
+        departmentsReducer: state.departmentsReducer
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({...vehicleCategoryActions}, dispatch)
+        actions: bindActionCreators({...departmentsAction}, dispatch)
     }
 }
 
 export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateVehicleCategoryPage))
+    connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateDepartmentPage))
 )
