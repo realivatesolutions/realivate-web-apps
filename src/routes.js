@@ -49,6 +49,7 @@ class Routes extends Component{
                 <Route exact path={'/service-crew/view'} component={ViewServiceCrewPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/service-crew/edit'} component={EditServiceCrewPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/departments'} component={DepartmentsPage} {...this.props} onChange={this.onChangeRunActions}/>
+                <Route exact path={'/departments/view'} component={ViewDepartmentPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/departments/create'} component={CreateDepartmentPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/departments/edit'} component={EditDepartmentPage} {...this.props} onChange={this.onChangeRunActions}/>
                 <Route exact path={'/dashboard'} component={DashboardPage} {...this.props} onChange={this.onChangeRunActions}/>

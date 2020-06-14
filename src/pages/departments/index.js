@@ -6,6 +6,7 @@ import { withStyles} from "@material-ui/core/styles";
 import GridContainer from "../../components/Grid/GridContainer";
 import GridItem from "../../components/Grid/GridItem";
 import Card from "../../components/Card/Card";
+import TextField from '@material-ui/core/TextField';
 import Button from "../../components/CustomButtons";
 import CardBody from "../../components/Card/CardBody";
 import CardHeader from "../../components/Card/CardHeader";
@@ -19,6 +20,7 @@ class DepartmentsPage extends Component {
         super(props);
         this.handleAddCategoryEvent = this.handleAddCategoryEvent.bind(this)
         this.handleViewCategoryEvent = this.handleViewCategoryEvent.bind(this)
+        this.handleSearchEvent = this.handleSearchEvent.bind(this)
     }
 
     componentDidMount() {
@@ -26,6 +28,10 @@ class DepartmentsPage extends Component {
     }
 
     handleAddCategoryEvent() {
+        this.props.history.push('/departments/create')
+    }
+
+    handleSearchEvent() {
         this.props.history.push('/departments/create')
     }
 
@@ -69,6 +75,8 @@ class DepartmentsPage extends Component {
                                     <GridItem item xs={3}>
                                     </GridItem>
                                     <GridItem item xs={6}>
+                                        <TextField id="outlined-basic" label="Search"  />
+                                        <Button color="info" round onClick={this.handleSearchEvent}> Search </Button>
                                     </GridItem>
                                     <GridItem item xs={3} container justify="flex-end">
                                         <Button color="info" round onClick={this.handleAddCategoryEvent}> Add </Button>
